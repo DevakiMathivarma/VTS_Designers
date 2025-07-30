@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-lijgnu$ybc)a7c%bqw=_4)imzl4_&pec&yv@ldjeo60c#kknd*
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['core.onrender.com']
+ALLOWED_HOSTS = ['*']
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
