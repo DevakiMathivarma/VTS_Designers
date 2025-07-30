@@ -1,0 +1,169 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}VTS Designers{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+<link rel="icon" type="image/png" href="{% static 'images/logo.PNG' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- outfit font -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+
+
+    {% block extra_css %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+
+
+    <div class="layout">
+        <!-- Left Column: Logo + Sidebar -->
+        <div class="left-column" id="sidebar">
+            <div class="logo-section">
+                <div class="logo-text">
+                    <img src="{% static 'images/logo.PNG' %}" alt="Logo">
+                    <h2>VTS Designers</h2>
+                </div>
+                <div>
+                    <i class="fas fa-bars menu-btn" id="menu-toggle"></i>
+                </div>
+            </div>
+            <div class="sidebar">
+                <ul>
+                    <li class="{% if request.resolver_match.url_name == 'dashboard' %}active{% endif %}">
+                        <a href="{% url 'dashboard' %}">
+                            <img src="{% static 'images/home.png' %}" alt="Home" class="icon white-filter"> Overview
+                        </a>
+                    </li>
+                    <li class="{% if request.resolver_match.url_name == 'project_create' %}active{% endif %}">
+                        <a href="{% url 'project_create' %}">
+                            <img src="{% static 'images/upload.png' %}" alt="Projects" class="icon white-filter">
+                            Projects
+                        </a>
+                    </li>
+ 
+                    <li class="{% if request.resolver_match.url_name == 'user_profile' %}active{% endif %}">
+    <a href="{% url 'user_profile' %}">
+        <img src="{% static 'images/folder.png' %}" alt="Profile" class="icon white-filter"> Profile
+    </a>
+</li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- Right Column: Topbar + Content -->
+        <div class="right-column">
+            <!-- Topbar -->
+            <div class="topbar">
+
+                <form method="get" action="{% url 'search_users' %}" class="dashboard-search">
+                    <button type="submit">
+                        <img src="{% static 'images/searchicon.png' %}" alt="Search">
+                        Search the designers
+                    </button>
+                </form>
+
+                <div class="icons">
+                    <button class="share-btn" onclick="window.location.href='{% url 'project_create' %}'">Share Your
+                        Work</button>
+                    <a href="#" class="icon-link notif" id="notif-btn">
+                        <i class='bx bx-bell'></i><span class="badge">{{ notifications_count }}</span>
+                    </a>
+                    <div class="notif-popup" id="notif-popup">
+                        <h4 class="notif-title">Notification</h4>
+                        <div class="notif-list">
+                            {% for n in recent_notifications %}
+
+                            <div class="notif-item">
+                                <div class="notif-header">
+                                    
+                                            <img 
+                                src="{% if n.sender.profile_pic %}{{ n.sender.profile_pic.url }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" 
+                                alt="{{ n.sender.username }}" 
+                                class="notif-avatar">
+
+                                    <div>
+                                        <strong class="notif-username">{{ n.sender.username }}</strong>
+                                        <span class="notif-message">{{ n.message }}</span>
+                                        <span class="notif-time">{{ n.created_at|timesince }} ago</span>
+                                    </div>
+                                </div>
+                                {% if n.project_image %}
+                                <div class="notif-image">
+                                    <img src="{{ n.project_image.url }}" alt="Project Image">
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% empty %}
+                            <p class="no-notif">No notifications yet.</p>
+                            {% endfor %}
+                        </div>
+                                <a href="{% url 'notifications' %}" class="view-all">View All</a>
+
+                    </div>
+
+
+                    <a href="{% url 'messages' %}" class="icon-link"><img src="{% static 'images/Mail.png' %}"
+                            alt="Messages"></a>
+<a href="{% url 'user_profile' %}" class="profile-link">
+    <img src="{% if request.user.profile_pic %}{{ request.user.profile_pic.url }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" 
+         class="profile-pic" alt="{{ request.user.username }}">
+    <span class="profile-name">{{ request.user.username }}</span>
+</a>
+
+                    <form method="post" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <button type="submit" class="logout-btn">Logout</button>
+                    </form>
+
+
+                </div>
+            </div>
+            <div class="content-wrapper">
+                <!-- Main Content -->
+                <div class="main-content">
+                    {% block content %}{% endblock %}
+                </div>
+                <!-- Right Sidebar -->
+                <div class="rightbar">
+                    {% block rightbar %}{% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const notifBtn = document.getElementById("notif-btn");
+            const notifPopup = document.getElementById("notif-popup");
+
+            notifBtn.addEventListener("click", function (e) {
+                e.preventDefault();
+                notifPopup.classList.toggle("active");
+            });
+
+            // Close popup when clicking outside
+            document.addEventListener("click", function (e) {
+                if (!notifBtn.contains(e.target) && !notifPopup.contains(e.target)) {
+                    notifPopup.classList.remove("active");
+                }
+            });
+        });
+
+        document.getElementById("menu-toggle").addEventListener("click", function () {
+            document.querySelector(".sidebar").classList.toggle("active");
+        });
+    </script>
+
+    {% block extra_js %}{% endblock %}
+</body>
+
+</html>

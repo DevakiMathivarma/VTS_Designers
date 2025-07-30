@@ -1,0 +1,210 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Dashboard | VTS Designers{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock %}
+
+{% block content %}
+<!-- Stats Cards -->
+<div class="stats-cards">
+    <div class="card">
+        <div class="card-projects">
+            <div class="card-top">
+                <p class="title">Total Projects</p>
+                <h2>{{ total_projects }}</h2>
+            </div>
+            <div>
+                <span class="icon blue"><img src="{% static 'images/folder.png' %}" class="blue-filter"
+                        alt="Projects"></span>
+            </div>
+        </div>
+        <p class="change">+12% <span class="text">from last month</span></p>
+    </div>
+    <div class="card">
+        <div class="card-projects">
+            <div class="card-top">
+                <p class="title">Messages</p>
+                <h2>{{ messages_count }}</h2>
+            </div>
+            <div>
+                <span class="icon green"><img src="{% static 'images/Mail.png' %}" class="green-filter"
+                        alt="Messages"></span>
+            </div>
+        </div>
+        <p class="change">+5 <span class="text">new today</span></p>
+    </div>
+    <div class="card">
+        <div class="card-projects">
+            <div class="card-top">
+                <p class="title">Candidates</p>
+                <h2>{{ candidates_count }}</h2>
+            </div>
+            <div>
+                <span class="icon purple"><img src="{% static 'images/usersp.png' %}" style="width: 35px; height:35px"
+                        alt="Candidates"></span>
+            </div>
+        </div>
+        <p class="change">+23 <span class="text">this week</span></p>
+    </div>
+    <div class="card">
+        <div class="card-projects">
+            <div class="card-top">
+                <p class="title">Notifications</p>
+                <h2>{{ notifications_count }}</h2>
+            </div>
+            <div>
+                <span class="icon orange"><i class='bx bx-bell'></i></span>
+            </div>
+        </div>
+        <p class="change"><a href="#" class="link">3 People</a> <span class="text">Liked your Projects</span></p>
+    </div>
+</div>
+
+<!-- Content Section: Upload Project + Rightbar -->
+<div class="content-section">
+    <!-- Upload Project Section -->
+    <div class="upload-card">
+        <h3>Upload New Project</h3><button class="new-project-btn"
+            onclick="window.location.href='{% url 'project_create' %}'">
+            + New Project
+        </button>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- <div class="upload-box">
+                <img src="{% static 'images/file.PNG' %}" alt="Upload" class="upload-icon">
+                <p>Drop your files here or click to browse</p>
+                <button>Choose Files</button>
+            </div> -->
+            <div class="upload-box" id="upload-area">
+                <img src="{% static 'images/file.PNG' %}" alt="Upload" class="upload-icon">
+                <p>Drop your files here or click to browse</p>
+                <button type="button" id="choose-files">Choose Files</button>
+                <input type="file" id="file-input" name="images" style="display: none;" multiple>
+            </div>
+
+            <div class="row" style="display: flex; gap: 30px; margin-top: 20px;">
+                <!-- Hardcoded Project Title -->
+                <div class="form-group" style="flex: 1;">
+                    <label for="project_title"
+                        style="display: block; font-weight: normal; font-size: 13px; color: #333; margin-bottom: 5px;">
+                        Project Title
+                    </label>
+                    <input type="text" id="project_title" placeholder="Enter project title" class="form-control"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;">
+                </div>
+
+                <!-- Hardcoded Category Dropdown -->
+                <div class="form-group" style="flex: 1;">
+                    <label for="category"
+                        style="display: block; font-weight: normal; font-size: 13px; color: #333; margin-bottom: 5px;">
+                        Category
+                    </label>
+                    <select id="category" class="form-control"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;">
+                        <option value="UI">UI Design</option>
+                        <option value="WEB">Web Design</option>
+                        <option value="APP">App Design</option>
+                        <option value="GRAPHIC">Graphic Design</option>
+                    </select>
+                </div>
+            </div>
+
+
+
+        </form>
+
+    </div>
+
+    <!-- Rightbar -->
+    <div class="rightbar">
+        <div class="messages">
+            <h3>
+                Recent Messages
+                <a href="{% url 'messages' %}" class="view-all">View All</a>
+            </h3>
+            {% for msg in recent_messages %}
+            <div class="message-item">
+                <img src="{% if msg.sender.profile_pic %}
+            {{ msg.sender.profile_pic.url }}
+          {% else %}
+            {% static 'images/default-avatar.png' %}
+          {% endif %}" alt="{{ msg.sender.username }}">
+                <div class="recent-msg">
+                    <div style="display: flex; justify-content: space-between;">
+                        <div><b>{{ msg.sender.username }} </b></div>
+
+                        <div>
+                           <p class="time" style="font-size: 10px;">{{ msg.timestamp|timesince }} ago</p>
+                        </div>
+                    </div>
+                    <div>
+                        <p style="font-size: 1rem;">{{ msg.content|truncatechars:40 }}</p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <p>No recent messages.</p>
+            {% endfor %}
+        </div>
+
+        <div class="notifications">
+            <h3>
+                Notifications
+                <a href="{% url 'notifications' %}" class="view-all"><i class="fas fa-external-link-alt"></i></a>
+            </h3>
+            {% for notif in recent_notifications %}
+            <div class="notification-item">
+                <div class="notif-icon">
+                    {% if "hire" in notif.message|lower %}
+                    <i class="fas fa-user-plus hire-icon"></i>
+                    {% elif "comment" in notif.message|lower %}
+                    <i class="fas fa-comments comment-icon"></i>
+                    {% elif "approved" in notif.message|lower %}
+                    <i class="fas fa-check-circle approved-icon"></i>
+                    {% else %}
+                    <i class="fas fa-bell default-icon"></i>
+                    {% endif %}
+                </div>
+                <div class="notif-text">
+                    <span>{{ notif.message }}</span><br>
+                    <p class="time">{{ notif.created_at|timesince }} ago</p>
+                </div>
+            </div>
+            {% empty %}
+            <p>No notifications yet.</p>
+            {% endfor %}
+        </div>
+
+
+        <div class="candidates">
+            <h3>Available Candidates</h3>
+            {% for candidate in available_candidates %}
+            <div class="candidate-item">
+                <div class="candidate-info">
+                    <img src="{% if candidate.profile_pic %}
+                        {{ candidate.profile_pic.url }}
+                      {% else %}
+                        {% static 'images/default-avatar.png' %}
+                      {% endif %}" alt="{{ candidate.username }}">
+                    <div class="candidate-text">
+                        <b>{{ candidate.username }}</b>
+                        <p>{{ candidate.profile.occupation|default:"UI/UX Designer" }}</p>
+                    </div>
+                </div>
+                <button onclick="window.location.href='{% url 'hire_now' candidate.id %}'">Hire</button>
+            </div>
+            {% empty %}
+            <p>No candidates available.</p>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

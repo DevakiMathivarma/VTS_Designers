@@ -1,0 +1,678 @@
+
+/* Overall Layout */
+
+body{
+    font-family: "Outfit", sans-serif;
+}
+
+.layout {
+    display: flex;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+/* Left Column */
+.left-column {
+    width: 220px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Logo Section */
+.logo-section {
+    background: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+   
+    z-index: 2;
+    width:20%;
+    position:fixed;
+     margin-left: -8px;
+
+}
+.logo-text {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* space between logo and text */
+}
+
+.logo-text img {
+    width: 40px;
+    height: 40px;
+}
+
+.logo-text h2 {
+    font-size: 16px;
+    margin: 0;
+    font-weight: bold;
+    white-space: nowrap; /* prevent breaking */
+}
+
+.logo-section img {
+    width: 45px;
+    height: 40px;
+}
+.logo-section h2 {
+    font-size: 15px;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Sidebar */
+.sidebar {
+    background: #FAA856;
+    color: #fff;
+    padding: 30px 20px;
+    flex: 1;
+    margin-top: 30px;
+    position:fixed;
+    width:200px;
+    height:500px;
+    margin-left: -8px;
+}
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+.sidebar ul li {
+    margin: 20px 0;
+}
+.sidebar ul li a {
+    color: black;
+    text-decoration: none;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px;
+}
+.sidebar ul li a  img{
+    width:20px;
+    height:20px;
+}
+.sidebar ul li.active a {
+    font-weight: bold;
+    color:white;
+}
+.sidebar ul li.active img.white-filter {
+    filter: brightness(0) invert(1);
+}
+/* Right Column */
+.right-column {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+   
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 15px 10px;
+    background: #fff;
+    margin: 50px auto 0;
+  width:80%;
+  
+
+}
+
+/* Search Bar */
+/* Search Bar (Exact Pink Style) */
+.dashboard-search button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #ff007f; /* Hot pink */
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+ 
+    border-top-left-radius: 8px;
+}
+.dashboard-search button img {
+    width: 18px;
+    height: 18px;
+}
+.dashboard-search button:hover {
+    opacity: 0.9;
+}
+.dashboard-search input {
+    display: none; /* Hides default input, as this acts like a button */
+}
+
+/* Share Button */
+.share-btn {
+    background: #ff5b77;
+    border: none;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Icons */
+.icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+.icons .badge {
+    background: red;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 50%;
+    padding: 3px 6px;
+    position: relative;
+    top: -20px;
+    left: -10px;
+}
+.icon-link img{
+    width:30px;
+    height:30px;
+}
+.icon-link i{
+    font-size: 25px;
+}
+.profile-pic {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+/* Main Content */
+.main-content {
+    flex:1;
+
+  width:90%;
+  margin: auto;
+   
+}
+.icon-link.notif i {
+    text-decoration: none;   /* Remove underline */
+    border: none;            /* Remove any borders */
+    display: inline-block;
+    line-height: 1;          /* Prevent extra space below */
+}
+
+.icon-link.notif {
+    text-decoration: none;   /* Ensure parent doesn't add underline */
+}
+
+.icon-link.notif {
+    position: relative;
+}
+/* Popup container */
+.notif-popup {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 100px;  /* <-- Increase this (was 60px) */
+    width: 380px;
+    background: #fff;
+    box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
+    border-radius: 15px;
+    padding: 20px;
+    z-index: 1000;
+    font-family: 'Inter', sans-serif;
+}
+.notif-popup.active { display: block; }
+
+/* Title */
+.notif-title {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+
+/* Notification item */
+.notif-item {
+    border-bottom: 1px solid #f0f0f0;
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+}
+.notif-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Header */
+.notif-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.notif-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.notif-username {
+    font-size: 16px;
+    font-weight: 600;
+    color: #E91E63; /* Pink like in the screenshot */
+}
+.notif-message {
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+    margin-left: 5px;
+}
+.notif-time {
+    display: block;
+    font-size: 12px;
+    color: #888;
+    margin-top: 3px;
+}
+
+/* Project preview image */
+.notif-image {
+    margin-top: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+.notif-image img {
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Empty state */
+.no-notif {
+    text-align: center;
+    padding: 20px;
+    color: #aaa;
+    font-size: 15px;
+}
+
+.logout-btn {
+    background: #ff4d4f;  /* Red color for logout */
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.logout-btn:hover {
+    background: #e04345; /* Darker red on hover */
+    transform: scale(1.05); /* Slight hover animation */
+}
+
+.logout-btn:active {
+    transform: scale(0.95); /* Press effect */
+}
+
+.logout-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 77, 79, 0.3); /* Focus ring */
+}
+.profile-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: #333;
+    font-weight: 600;
+}
+
+.profile-name {
+    font-size: 14px;
+    color: #333;
+}
+
+
+.menu-btn {
+    display: none!important;
+}
+@media (min-width: 320px) and (max-width: 374px) {
+     .sidebar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 100%;
+        height:200px;
+        background: #FAA856;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+   
+    .sidebar.active {
+        display: flex;
+    }
+
+  
+    .logo-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+           width: 100% !important;
+      
+        
+    }
+.logo-text{
+    position:relative;
+}
+
+    .menu-btn {
+        display: block !important;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+       transform: translateX(-90%);
+    }
+
+
+
+    .sidebar ul li {
+        margin: 15px 0;
+    }
+
+  
+    .left-column {
+        width: 2px !important;
+    }
+    .main-content{
+        
+             width: 95%;
+        max-width: 500px; /* Optional: limit width */
+        margin: 20px auto;
+       
+
+    }
+    .topbar{
+        /* margin-top: 70px;
+         margin-left: 300px;
+         transform: translateX(-500px);
+         flex-direction: column; */
+           width: 100%;
+        max-width: 500px; /* Optional: limit width */
+        margin: 60px auto 0; 
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+  
+    .icons{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+  
+       .right-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+}
+@media (min-width: 374px) and (max-width: 424px) {
+ .sidebar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 100%;
+        height:200px;
+        background: #FAA856;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+   
+    .sidebar.active {
+        display: flex;
+    }
+
+  
+    .logo-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+           width: 100% !important;
+     
+        
+    }
+
+.logo-text{
+    position:relative;
+}
+
+    .menu-btn {
+        display: block !important;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+       transform: translateX(-90%);
+    }
+    .sidebar ul li {
+        margin: 15px 0;
+    }
+
+  
+    .left-column {
+        width: 2px !important;
+    }
+    .main-content{
+        
+             width: 95%;
+        max-width: 500px; /* Optional: limit width */
+        margin: 20px auto;
+
+    }
+    .topbar{
+        /* margin-top: 70px;
+         margin-left: 300px;
+         transform: translateX(-500px);
+         flex-direction: column; */
+           width: 100%;
+        max-width: 500px; /* Optional: limit width */
+        margin: 60px auto 0; 
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+  
+    .icons{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+  
+       .right-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+    }
+
+}
+@media (min-width: 424px) and (max-width: 599px) {
+
+    .sidebar {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 40px;
+        left: 0;
+        width: 100%;
+        height:200px;
+        background: #FAA856;
+        padding: 20px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        z-index: 1000;
+    }
+
+   
+    .sidebar.active {
+        display: flex;
+    }
+
+  
+    .logo-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 15px;
+           width: 100% !important; 
+          
+          
+    }
+
+.logo-text{
+    position:relative;
+      margin-top: -10px;
+}
+
+    .menu-btn {
+       
+        display: block !important;
+        font-size: 24px;
+        color: #333;
+        cursor: pointer;
+       transform: translateX(-90%);
+    }
+
+
+    .sidebar ul li {
+        margin: 15px 0;
+    }
+
+  
+    .left-column {
+        width: 2px !important;
+    }
+    .main-content{
+        
+             width: 95%;
+        max-width: 500px; /* Optional: limit width */
+        margin: 20px auto;
+
+    }
+    .topbar{
+       
+           width: 100%;
+        max-width: 500px; /* Optional: limit width */
+        margin: 60px auto 0; 
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+  
+    .icons{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+     /* .menu-btn {
+        position: relative;
+        right: 0;
+        transform: none; 
+    } */
+       .right-column {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* centers horizontally */
+    }
+
+  
+}
+@media (min-width: 599px) and (max-width: 767px) {
+ .left-column{
+    width:180px;
+ }
+ .sidebar{
+    width:120px;
+    height:100%;
+ }
+ .logo-section{
+    width:150px;
+ }
+ .topbar{
+    flex-wrap: wrap;
+ }
+}
+@media (min-width: 767px) and (max-width: 899px) {
+   .left-column{
+    width:180px;
+ }
+ .sidebar{
+    width:150px;
+    height:100%;
+ }
+ .logo-section{
+    width:170px;
+ }
+ .topbar{
+    flex-wrap: wrap;
+    margin-left: 10%;
+ }
+}
+@media (min-width: 899px) and (max-width: 1023px) {
+     .left-column{
+    width:180px;
+ }
+ .sidebar{
+    width:150px;
+    height:100%;
+ }
+ .logo-section{
+    width:170px;
+ }
+ .topbar{
+    flex-wrap: wrap;
+    margin-left: 10%;
+ }
+}
+@media (min-width: 1023px) and (max-width: 1199px) {
+  .left-column{
+    width:180px;
+ }
+ .sidebar{
+    width:150px;
+    height:100%;
+ }
+ .logo-section{
+    width:170px;
+ }
+ .topbar{
+    flex-wrap: wrap;
+    margin-left: 4%;
+ }
+}
+
+@media (min-width: 1199px) and (max-width: 1439px) {
+ .sidebar{
+    width:150px;
+    height:100%;
+ }
+}
+@media (min-width: 1439px) and (max-width: 1599px) {
+  .sidebar{
+    height:100%;
+  }
+}

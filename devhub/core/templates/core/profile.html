@@ -1,0 +1,90 @@
+{% extends 'core/base.html' %}
+{% load static %}
+{% block title %}My Profile | VTS Designers{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/profile.css' %}">
+{% endblock %}
+{% block content %}
+<div class="profile-container">
+    <h2 class="profile-title">My Profile</h2>
+    <form method="post" enctype="multipart/form-data" class="profile-form">
+        {% csrf_token %}
+
+        <!-- Profile Picture -->
+        <div class="profile-pic-section">
+            <img src="{% if user.profile_pic %}{{ user.profile_pic.url }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" 
+                 alt="Profile Picture" class="profile-pic-preview">
+        </div>
+<div class="form-group">
+    <label for="profile_pic" class="file-label">Upload Profile Picture</label>
+    <input type="file" id="profile_pic" name="profile_pic" class="file-input">
+</div>
+
+        <!-- Fields -->
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" name="username" value="{{ user.username }}" readonly>
+        </div>
+
+        <div class="form-group">
+            <label>Occupation</label>
+            <input type="text" name="occupation" value="{{ user.occupation }}">
+        </div>
+
+        <div class="form-group">
+            <label>Company Name</label>
+            <input type="text" name="company_name" value="{{ user.company_name }}">
+        </div>
+
+        <div class="form-group">
+            <label>Location</label>
+            <input type="text" name="location" value="{{ user.location }}">
+        </div>
+
+        <div class="form-group">
+            <label>About Me</label>
+            <textarea name="about_me" rows="4">{{ user.about_me }}</textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Project Descriptions</label>
+            <textarea name="projects_descriptions" rows="4">{{ user.projects_descriptions }}</textarea>
+        </div>
+
+        <div class="form-group custom-section-container">
+    <div id="custom-sections">
+        <!-- Dynamic fields will be added here -->   
+
+    </div>
+    <button type="button" id="add-custom-section" class="add-btn">+ Add Custom Section</button>
+</div>
+
+        <!-- Save Button -->
+        <button type="submit" class="save-btn">Submit</button>
+    </form>
+</div>
+{% endblock %}
+{% block extra_js %}
+<script>
+    document.getElementById('add-custom-section').addEventListener('click', function () {
+        let container = document.getElementById('custom-sections');
+
+        // Add label only if it doesn't exist
+        if (!document.getElementById('custom-label')) {
+            let label = document.createElement('label');
+            label.textContent = 'Custom Sections';
+            label.id = 'custom-label';
+            container.prepend(label);
+        }
+
+        // Create new input
+        let input = document.createElement('input');
+        input.type = 'text';
+        input.name = 'custom_message[]';  // Array field
+        input.className = 'custom-input';
+        input.placeholder = 'Enter custom message';
+        container.appendChild(input);
+    });
+</script>
+
+{% endblock %}

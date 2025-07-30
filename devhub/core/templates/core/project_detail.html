@@ -1,0 +1,16 @@
+{% extends 'core/dashboard.html' %}
+{% block content %}
+<h2>{{ project.title }}</h2>
+{% if project.image %}
+    <img src="{{ project.image.url }}" style="max-width:300px;">
+{% endif %}
+<p>{{ project.description }}</p>
+<p><b>Tags:</b> {{ project.tags }}</p>
+<p><b>Owner:</b> {{ project.owner.username }}</p>
+{% if project.owner == user %}
+    <a href="{% url 'project_edit' project.pk %}">Edit</a>
+    <form method="post" action="{% url 'project_delete' project.pk %}">{% csrf_token %}
+        <button type="submit">Delete</button>
+    </form>
+{% endif %}
+{% endblock %}

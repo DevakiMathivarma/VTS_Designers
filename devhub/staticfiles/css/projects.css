@@ -1,0 +1,514 @@
+body{
+    font-family: "Outfit", sans-serif;
+}
+
+
+.project-create-page {
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.project-preview {
+    background: #fff9f0;
+   
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.preview-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.preview-info h2 {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0;
+}
+.preview-info{
+    display:flex;
+    gap:20px;
+}
+.upload-box {
+    border: 2px dashed #f28c28;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    background: #fffaf3;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+/* .upload-box:hover {
+    background: #fff3e6;
+} */
+
+.upload-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 10px;
+}
+
+.upload-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+.upload-subtext {
+    font-size: 14px;
+    color: #777;
+}
+
+.upload-subtext.small {
+    font-size: 12px;
+    color: #999;
+}
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px; /* smaller text */
+    color: #555;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #f28c28; /* orange checkbox (optional) */
+    cursor: pointer;
+}
+
+.custom-checkbox label {
+    margin: 0;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.preview-info p {
+    margin: 5px 0;
+    font-size: 14px;
+    color: #555;
+    display:inline;
+}
+
+.edit-link {
+    background: none;
+    border: none;
+    color: #fb2464;
+    font-size: 14px;
+    cursor: pointer;
+    
+}
+
+.hire-btn {
+    background: #ff5e8e;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.preview-image {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.preview-image img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+.project-create-page {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+.project-form-container {
+    background: #fffdf8;
+    border: 3px solid #3e2108;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+.form-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.form-subtitle {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 6px;
+}
+
+.upload-box {
+    border: 2px dashed #fbd4b9;
+    border-radius: 10px;
+    padding: 50px;
+    text-align: center;
+    margin-top: 10px;
+    background: #fff;
+}
+
+.upload-title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.upload-subtext {
+    font-size: 13px;
+    color: #888;
+}
+
+.upload-subtext.small {
+    font-size: 11px;
+}
+
+.form-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.form-fields .row {
+    display: flex;
+    
+    gap: 30px;
+}
+
+.form-fields input,
+.form-fields select,
+.form-fields textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #f9b87e;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.button-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn-draft {
+    background: #ffb74d;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-publish {
+    background: #ff5e8e;
+    padding: 12px 20px;
+    border-radius: 8px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+.recent-section {
+    margin-top: 40px;
+}
+
+.recent-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.recent-uploads {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.recent-card {
+    width: 210px;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+    text-align: center;
+}
+
+.recent-img {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 6px;
+    margin-bottom: 10px;
+}
+
+.status-badge {
+    padding: 9px 10px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.status-badge.published {
+    background: #e6f7ec;
+    color: #2e7d32;
+    pa
+}
+
+.status-badge.draft {
+    background: #fff7e0;
+    color: #a67c00;
+}
+
+.project-form-container {
+    background: white;
+    border: 1px solid #f5e2d5;
+    padding: 25px;
+    border-radius: 12px;
+    width:89%;
+}
+.form-header {
+    background:  #ffedd5;
+    padding: 10px;
+    border-radius: 8px 8px 0 0;
+    margin: -25px -25px 20px -25px;
+}
+.section-label {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    display: block;
+}
+.upload-icon {
+    width: 40px;
+    margin-bottom: 10px;
+}
+.tag-container {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.tag {
+    background: #ffe5ef;
+    color: #ff5e8e;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+.checkbox-inline {
+    display: flex;
+    align-items: center;
+    margin-top: 28px;
+}
+.btn-cancel {
+    background: transparent;
+    border: none;
+    color: #888;
+    font-size: 14px;
+    cursor: pointer;
+}
+.form-group select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+    background: #fff;
+}
+@media (min-width: 320px) and (max-width: 374px) {
+            .right-column .topbar{
+       
+           width: 100%;
+        max-width: 500px; /* Optional: limit width */
+        margin: 60px -20px auto 0; 
+        padding: 10px;
+        flex-direction: column;
+        align-items: center;
+        
+    } 
+    .project-create-page{
+       overflow-x: auto; 
+       margin-left: -10%;;
+    }
+    .upload-box{
+        width:50%;
+    }
+    .row{
+        flex-direction: column;
+    }
+    .form-fields input,
+.form-fields select,
+.form-fields textarea {
+    width:60%;
+}
+.form-fields label{
+    display: block;
+}
+.button-row {
+   
+    justify-content: center;
+    flex-wrap:wrap;
+   align-items: stretch;
+   gap:10px;
+}
+.button-row button{
+ width:40%;
+ font-size: 8px;
+}
+.recent-section h3{
+     margin-left: 10%;
+}
+.recent-uploads{
+    margin-left: 8%;
+}
+.preview-header{
+    flex-direction: column;
+    gap:30px;
+}
+.form-header{
+    width: 90%;;
+    
+}
+.project-form-container{
+    width:70%;
+    margin-left: 5%;
+}
+.project-create-page{
+    padding:20px;
+}
+}
+@media (min-width: 374px) and (max-width: 424px) {
+.project-form-container{
+    width:70%;
+    margin-left: -5%;
+}
+ .row{
+        flex-direction: column;
+    }
+    .preview-header{
+    flex-direction: column;
+    gap:30px;
+}
+
+}
+@media (min-width: 424px) and (max-width: 599px) {
+.project-form-container{
+    width:85%;
+    margin-left: -5%;
+}
+ .row{
+        flex-direction: column;
+    }
+    .preview-header{
+    flex-direction: column;
+    gap:30px;
+}
+ .right-column .icons{
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+@media (min-width: 599px) and (max-width: 767px) {
+    .project-form-container{
+    width:85%;
+    
+}
+ .row{
+        flex-direction: column;
+    }
+    .preview-header{
+    flex-direction: column;
+    gap:30px;
+}
+}
+@media (min-width: 767px) and (max-width: 899px) {
+     .project-form-container{
+    width:85%;
+    
+}
+ .row{
+      flex-wrap: wrap;
+        /* flex-direction: column; */
+    }
+    .preview-header{
+    flex-wrap: wrap;
+    gap:30px;
+}
+}
+@media (min-width: 899px) and (max-width: 1023px) {
+    .project-form-container{
+    width:85%;
+    
+}
+ .row{
+      flex-wrap: wrap;
+    }
+    .preview-header{
+    flex-wrap: wrap;
+    gap:30px;
+}
+}
+@media (min-width: 1023px) and (max-width: 1199px) {
+        .project-form-container{
+    width:85%;
+    
+}
+ .row{
+      flex-wrap: wrap;
+    }
+    .preview-header{
+    flex-wrap: wrap;
+    gap:30px;
+}
+}
+@media (min-width: 1199px) and (max-width: 1439px) {
+            .project-form-container{
+    width:85%;
+    
+}
+ .row{
+      flex-wrap: wrap;
+    }
+    .preview-header{
+    flex-wrap: wrap;
+    gap:30px;
+}
+}
+@media (min-width: 1439px) and (max-width: 1599px) {
+                .project-form-container{
+    width:85%;
+    
+}
+ .row{
+      flex-wrap: wrap;
+    }
+    .preview-header{
+    flex-wrap: wrap;
+    gap:30px;
+}
+}
+@media (max-width:1024px){
+     body{
+        overflow-x: hidden;
+    }
+    html{
+        overflow-y: auto;
+    }
+}

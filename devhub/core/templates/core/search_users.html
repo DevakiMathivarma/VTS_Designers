@@ -1,0 +1,99 @@
+{% extends 'core/base.html' %}
+{% load static %}
+<!-- {% block body_class %}search-page{% endblock %} -->
+{% block title %}Search Designers{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+<link rel="stylesheet" href="{% static 'css/search.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="search-page">
+    <div class="search-bar">
+        <form method="get">
+            <input type="text" name="q" placeholder="Search the designers" value="{{ query }}">
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    {% for u in users %}
+    <div class="user-project-container">
+        <!-- Left: User Card -->
+        <div class="user-card">
+            <div class="user-header"></div>
+            <div class="user-info">
+                <img src="{% if u.profile_pic %}/media/{{ u.profile_pic }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}"
+                    alt="Profile">
+                <h3>{{ u.username }}</h3>
+                <p>{{ u.location|default:"Unknown" }}</p>
+                <div class="user-stats">
+                    <div><strong>{{ u.total_likes|default:0 }}</strong><br>Appreciation</div>
+                    <div><strong>{{ u.profile.followers|default:0 }}</strong><br>Followers</div>
+                    <div><strong>{{ u.total_views|default:0 }}</strong><br>Project Views</div>
+                </div>
+<a href="{% url 'messages' %}?user={{ u.id }}" class="message-btn">Message</a>
+            </div>
+        </div>
+
+        <!-- Right: Horizontal Project Scroll -->
+        <div class="projects-scroll">
+            {% for project in u.projects.all %}
+            <div class="project-card">
+                <img src="{% if project.images %}/media/{{ project.images }}{% else %}{% static 'images/default-project.png' %}{% endif %}"
+                    alt="{{ project.project_title }}">
+                <div class="project-info">
+                    
+                    <div class="project-stats">
+                       
+                         <h4 >{{ project.project_title|truncatechars:20 }}</h4>
+                         <p>{{project.category}}</p>
+                        <form>
+                            {% csrf_token %}
+                            <button type="button" class="like-btn" data-project="{{ project.id }}">
+                                <span> <i class="fas fa-thumbs-up"></i> {{ project.likes }}</span>
+                            </button>
+                        </form>
+
+
+                       
+                        <span><i class="fas fa-eye" onclick="window.location.href='{% url 'project_view' project.id %}'" style="cursor:pointer;"></i> {{ project.views }}</span>
+                    </div>
+
+
+                </div>
+            </div>
+            {% empty %}
+            <p style="padding: 10px;">No projects yet.</p>
+            {% endfor %}
+        </div>
+    </div>
+    {% empty %}
+    <p>No users found.</p>
+    {% endfor %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.querySelectorAll('.like-btn').forEach(button => {
+        button.addEventListener('click', function (e) {
+            e.preventDefault();
+            const projectId = this.dataset.project;
+            fetch(`/projects/${projectId}/like/`, {
+                method: 'POST',
+                headers: {
+                    'X-CSRFToken': '{{ csrf_token }}',
+                    'Content-Type': 'application/json',
+                },
+            })
+                .then(response => response.json())
+                .then(data => {
+                    alert(data.message);
+                    location.reload();
+                })
+                .catch(() => alert("Something went wrong!"));
+        });
+    });
+</script>
+{% endblock %}

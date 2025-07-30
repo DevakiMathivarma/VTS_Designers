@@ -1,0 +1,97 @@
+[
+  {
+    "model": "core.pythonuser",
+    "pk": 1,
+    "fields": {
+      "username": "alice",
+      "password": "pbkdf2_sha256$600000$dummy$h0J7nIGu5u7kDXJxRfV5bw==",
+      "email": "alice@example.com",
+      "location": "New York",
+      "company_name": "TechCorp",
+      "occupation": "Backend Developer",
+      "about_me": "I love building complex Django applications.",
+      "projects_descriptions": "Created multiple open-source Django apps.",
+      "custom_message": "Excited to collaborate on new ideas!",
+      "can_add_projects": true
+    }
+  },
+  {
+    "model": "core.pythonuser",
+    "pk": 2,
+    "fields": {
+      "username": "bob",
+      "password": "pbkdf2_sha256$600000$dummy$h0J7nIGu5u7kDXJxRfV5bw==",
+      "email": "bob@example.com",
+      "location": "London",
+      "company_name": "Designify",
+      "occupation": "UI/UX Designer",
+      "about_me": "Passionate about clean and creative designs.",
+      "projects_descriptions": "Delivered modern UI for multiple SaaS platforms.",
+      "custom_message": "Let’s design something amazing!",
+      "can_add_projects": false
+    }
+  },
+  {
+    "model": "core.pythonuser",
+    "pk": 3,
+    "fields": {
+      "username": "charlie",
+      "password": "pbkdf2_sha256$600000$dummy$h0J7nIGu5u7kDXJxRfV5bw==",
+      "email": "charlie@example.com",
+      "location": "San Francisco",
+      "company_name": "CloudSoft",
+      "occupation": "Full Stack Developer",
+      "about_me": "Building scalable web platforms with Django & React.",
+      "projects_descriptions": "Experience in cloud-native applications.",
+      "custom_message": "Open for freelance collaborations.",
+      "can_add_projects": true
+    }
+  },
+  {
+    "model": "core.pythonuser",
+    "pk": 4,
+    "fields": {
+      "username": "diana",
+      "password": "pbkdf2_sha256$600000$dummy$h0J7nIGu5u7kDXJxRfV5bw==",
+      "email": "diana@example.com",
+      "location": "Berlin",
+      "company_name": "AIWorks",
+      "occupation": "Data Scientist",
+      "about_me": "AI enthusiast with a focus on NLP projects.",
+      "projects_descriptions": "Published research on deep learning models.",
+      "custom_message": "Interested in ML-based startups.",
+      "can_add_projects": true
+    }
+  },
+  {
+    "model": "core.pythonuser",
+    "pk": 5,
+    "fields": {
+      "username": "edward",
+      "password": "pbkdf2_sha256$600000$dummy$h0J7nIGu5u7kDXJxRfV5bw==",
+      "email": "edward@example.com",
+      "location": "Toronto",
+      "company_name": "SecureNet",
+      "occupation": "Cybersecurity Engineer",
+      "about_me": "Protecting web platforms with cutting-edge security.",
+      "projects_descriptions": "Specialized in Django app hardening.",
+      "custom_message": "Let’s make the web safer together.",
+      "can_add_projects": false
+    }
+  },
+  { "model": "core.project", "pk": 1, "fields": { "owner": 1, "images": "", "project_title": "Django E-Commerce", "category": "Web Development", "description": "A fully functional e-commerce platform with payment integration.", "tags": "django,ecommerce,web", "visibility": "Public", "license": "MIT", "downloadable": true, "created_at": "2025-07-20T12:00:00Z" }},
+  { "model": "core.project", "pk": 2, "fields": { "owner": 2, "images": "", "project_title": "Portfolio Website", "category": "Design", "description": "A clean, responsive portfolio website for creative professionals.", "tags": "portfolio,web,design", "visibility": "Public", "license": "GPLv3", "downloadable": false, "created_at": "2025-07-21T12:00:00Z" }},
+  { "model": "core.project", "pk": 3, "fields": { "owner": 3, "images": "", "project_title": "SaaS Dashboard", "category": "Full Stack", "description": "A SaaS analytics dashboard built using Django and React.", "tags": "saas,react,django", "visibility": "Public", "license": "Apache 2.0", "downloadable": true, "created_at": "2025-07-22T12:00:00Z" }},
+  { "model": "core.project", "pk": 4, "fields": { "owner": 4, "images": "", "project_title": "AI Chatbot", "category": "AI/ML", "description": "An AI-powered chatbot for customer support using NLP.", "tags": "ai,chatbot,nlp", "visibility": "Public", "license": "MIT", "downloadable": false, "created_at": "2025-07-23T12:00:00Z" }},
+  { "model": "core.project", "pk": 5, "fields": { "owner": 5, "images": "", "project_title": "Security Scanner", "category": "Cybersecurity", "description": "A Django-based security vulnerability scanner for web apps.", "tags": "security,django,scanner", "visibility": "Private", "license": "Proprietary", "downloadable": false, "created_at": "2025-07-24T12:00:00Z" }},
+  { "model": "core.project", "pk": 6, "fields": { "owner": 1, "images": "", "project_title": "Blog CMS", "category": "Web Development", "description": "A lightweight CMS for blogging built with Django.", "tags": "cms,blog,django", "visibility": "Public", "license": "MIT", "downloadable": true, "created_at": "2025-07-25T12:00:00Z" }},
+  { "model": "core.hiringpost", "pk": 1, "fields": { "user": 1, "reason_for_hire": "Scaling our SaaS product", "category": "Backend Development", "budget": "1500.00", "project_description": "We need an experienced Django developer for a complex SaaS platform.", "personal_note": "Urgent requirement!", "hiring_for": "Freelance Developer", "created_at": "2025-07-26T08:00:00Z" }},
+  { "model": "core.hiringpost", "pk": 2, "fields": { "user": 2, "reason_for_hire": "UI overhaul", "category": "Design", "budget": "800.00", "project_description": "We want to redesign our website with a fresh modern UI.", "personal_note": "Looking for creative designers.", "hiring_for": "UI/UX Designer", "created_at": "2025-07-24T08:00:00Z" }},
+  { "model": "core.hiringpost", "pk": 3, "fields": { "user": 5, "reason_for_hire": "Improve security", "category": "Cybersecurity", "budget": "2000.00", "project_description": "Need a security audit for our Django applications.", "personal_note": "Experience in pen-testing preferred.", "hiring_for": "Security Consultant", "created_at": "2025-07-23T08:00:00Z" }},
+  { "model": "core.message", "pk": 1, "fields": { "sender": 1, "receiver": 2, "content": "Hi Bob! I loved your portfolio project!", "timestamp": "2025-07-26T09:00:00Z" }},
+  { "model": "core.message", "pk": 2, "fields": { "sender": 2, "receiver": 1, "content": "Thanks Alice! Let's collaborate soon.", "timestamp": "2025-07-26T10:00:00Z" }},
+  { "model": "core.message", "pk": 3, "fields": { "sender": 3, "receiver": 1, "content": "Can you review my SaaS dashboard code?", "timestamp": "2025-07-27T09:00:00Z" }},
+  { "model": "core.notification", "pk": 1, "fields": { "user": 1, "message": "Bob sent you a message.", "is_read": false, "created_at": "2025-07-26T10:00:00Z" }},
+  { "model": "core.notification", "pk": 2, "fields": { "user": 2, "message": "Alice commented on your project.", "is_read": false, "created_at": "2025-07-27T11:00:00Z" }},
+  { "model": "core.notification", "pk": 3, "fields": { "user": 1, "message": "Charlie applied for your hiring post.", "is_read": false, "created_at": "2025-07-28T12:00:00Z" }}
+]

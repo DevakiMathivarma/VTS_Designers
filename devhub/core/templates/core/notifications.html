@@ -1,0 +1,30 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}Notifications | VTS Designers{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/notifications.css' %}">
+{% endblock %}
+
+{% block body_class %}notifications-page{% endblock %}
+
+{% block content %}
+<div class="notification-card">
+    <h2>Notifications</h2>
+    {% for n in notifications %}
+    <div class="notif-item">
+        <img src="{{ n.sender.profile_image.url|default:'/static/images/default-avatar.png' }}" class="notif-avatar">
+        <div>
+            <strong>{{ n.sender.username }}</strong> {{ n.message }}
+            <p class="notif-time">{{ n.created_at|timesince }} ago</p>
+        </div>
+        {% if n.project %}
+        <img src="{{ n.project.images.url }}" class="notif-project-img">
+        {% endif %}
+    </div>
+    {% empty %}
+    <p>No notifications yet.</p>
+    {% endfor %}
+</div>
+{% endblock %}

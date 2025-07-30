@@ -1,0 +1,237 @@
+body{
+    font-family: "Outfit", sans-serif;
+}
+
+
+
+/* Wrapper */
+.messages-wrapper {
+    display: flex;
+    height: 600px;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Sidebar */
+.message-sidebar {
+    width: 30%;
+    background: #fff5eb;
+    border-right: 1px solid #ddd;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+}
+.sidebar-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Tabs */
+.tabs {
+    margin-top: 10px;
+    display: flex;
+    gap: 20px;
+}
+.tabs .tab {
+    cursor: pointer;
+    font-size: 14px;
+    padding-bottom: 5px;
+    color: #666;
+    position: relative;
+}
+.tabs .tab.active {
+    color: #e91e63;
+    font-weight: 600;
+}
+.tabs .tab.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    height: 2px;
+    width: 100%;
+    background: #e91e63;
+    border-radius: 2px;
+}
+
+/* Message list */
+.message-list {
+    overflow-y: auto;
+    flex: 1;
+}
+.message-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.message-item:hover {
+    background: #ffe8d6;
+}
+.message-item img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.message-info strong {
+    font-size: 15px;
+    display: block;
+        text-decoration: none;
+
+}
+.user-role {
+    font-size: 13px;
+    color: #666;
+}
+.empty-msg {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+}
+
+/* Chat Section */
+.message-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+}
+.chat-header {
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 18px;
+    font-weight: 600;
+}
+.chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    color: #666;
+}
+.chat-body {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background: #fafafa;
+}
+.chat-msg {
+    max-width: 70%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    position: relative;
+    font-size: 14px;
+}
+.chat-msg.sent {
+    background: #e91e63;
+    color: white;
+    margin-left: auto;
+}
+.chat-msg.received {
+    background: #f1f1f1;
+    color: #333;
+    margin-right: auto;
+}
+.chat-time {
+    display: block;
+    font-size: 11px;
+    margin-top: 3px;
+    text-align: right;
+    color: rgba(255,255,255,0.8);
+}
+.chat-msg.received .chat-time {
+    color: #888;
+}
+.message-item.active {
+    background: #ffe8d6;
+}
+.message-list a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    border-bottom: 1px solid #eee;
+    transition: background 0.2s;
+}
+.message-list a:hover {
+    background: #ffe8d6;
+}
+.chat-input {
+    display: flex;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    background: #fff;
+}
+.chat-input input {
+    flex: 1;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 20px;
+    outline: none;
+}
+.chat-input button {
+    background: #e91e63;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-left: 10px;
+    cursor: pointer;
+    font-weight: bold;
+}
+.chat-input button:hover {
+    background: #d81b60;
+}
+.chat-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+    background: #fff;
+}
+
+.chat-header-avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #ff5b77; /* optional border to match theme */
+}
+
+.chat-header h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+@media (max-width:1024px){
+    body{
+        overflow-x: hidden;
+    }
+    html{
+        overflow-y: auto;
+    }
+}@media(max-width:480px){
+    .message-content{
+        overflow-x: auto;
+    }
+    .messages-wrapper{
+        flex-wrap: wrap;
+    }
+}

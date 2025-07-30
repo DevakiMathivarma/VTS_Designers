@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+        <meta charset="UTF-8">
+
+    <!-- Viewport for responsiveness -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | VTS Designers</title>
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+</head>
+<body>
+<div class="login-container">
+    <h2>Login</h2>
+   
+    <form method="POST">
+    {% csrf_token %}
+    <label>Email Address</label>
+    <input type="email" name="username" placeholder="Enter your Email" required>
+    <label>Password</label>
+    <input type="password" name="password" placeholder="Enter your Password" required>
+    <button type="submit">Login</button>
+</form>
+
+</div>
+</body>
+</html>
+<!-- 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <div class="tablet-frame">
+        <div class="tablet-notch"></div>
+        <div class="login-container">
+            <h2 class="login-title">Login</h2>
+                            <link rel="stylesheet" href="{% static 'css/login.css' %}">
+
+            <form method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your Email Id" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your Password" required>
+                </div>
+                <button type="submit" class="login-btn">Login</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html> -->

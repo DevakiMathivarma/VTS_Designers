@@ -1,0 +1,258 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block title %}New Project | VTS Designers{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/base.css' %}">
+<link rel="stylesheet" href="{% static 'css/projects.css' %}">
+{% endblock %}
+
+{% block content %}
+<div style="background-color: #fff9f0; padding-left: 5px; padding-right: 5px;">
+    <div class="project-create-page">
+
+        {% if published_project and not edit_mode %}
+        <!-- Project Preview Section -->
+        <div class="project-preview">
+            <div class="preview-header">
+                <div class="preview-info">
+                    <div>
+                        <a href="{% url 'search_users' %}"><img src="{% static 'images/profile.png' %}"
+                                class="profile-pic"></a>
+                    </div>
+                    <div>
+                        <h2>{{ published_project.project_title }}</h2>
+                        <p>{{ published_project.owner.username }}</p>
+                        <form method="post" style="display:inline;">
+                            {% csrf_token %}
+                            <input type="hidden" name="project_id" value="{{ published_project.id }}">
+                            <button type="submit" name="edit_mode" class="edit-link">Edit Projects</button>
+                        </form>
+                    </div>
+                </div>
+                <button class="hire-btn"
+                    onclick="window.location.href='{% url 'hire_now' published_project.owner.id %}'"><a
+                        href="{% url 'search_users' %}"><img src="{% static 'images/profile.png' %}"
+                            style="width:15px;height:15px;" class="profile-pic"></a>
+                    Hire Now
+                </button>
+            </div>
+            <div class="preview-image">
+                {% if published_project.images %}
+                <img src="{{ published_project.images.url }}" alt="{{ published_project.project_title }}">
+                {% else %}
+                <img src="{% static 'images/no-image.jpg' %}" alt="No Image">
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if not published_project or edit_mode %}
+        <!-- Project Form -->
+        <div class="project-form-container">
+            <div class="form-header">
+                <h3 class="form-title">Project Details</h3>
+                <p class="form-subtitle">Fill in the information about your design project</p>
+            </div>
+            <form method="post" enctype="multipart/form-data" id="projectForm">
+                {% csrf_token %}
+                {% if project_to_edit %}
+                <input type="hidden" name="project_id" value="{{ project_to_edit.id }}">
+                {% endif %}
+
+                <!-- Drag & Drop -->
+                <!-- <div class="form-section">
+                    <label class="section-label">Project Images</label>
+                    <div class="upload-box">
+                        <img src="{% static 'images/file1.PNG' %}" alt="Upload" class="upload-icon">
+                        <p class="upload-title">Drop your images here</p>
+                        <p class="upload-subtext">or click to browse files</p>
+                        <p class="upload-subtext small">PNG, JPG, GIF up to 10MB each</p>
+                        {{ form.images }}
+                    </div>
+                </div> -->
+                <div class="form-section">
+    <label class="section-label">Project Images</label>
+    <div class="upload-box" id="upload-area">
+        <img src="{% static 'images/file1.PNG' %}" alt="Upload" class="upload-icon">
+        <p class="upload-title">Drop your images here</p>
+        <p class="upload-subtext">or click to browse files</p>
+        <p class="upload-subtext small">PNG, JPG, GIF up to 10MB each</p>
+        <input type="file" id="file-input" name="images" style="display: none;" multiple>
+    </div>
+</div>
+
+                <!-- Fields -->
+                <div class="form-fields">
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="{{ form.project_title.id_for_label }}">Project Title</label>
+                            {{ form.project_title }}
+                        </div>
+                        <div class="form-group">
+                            <label for="id_category">Category</label>
+                            {{ form.category }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.description.id_for_label }}">Description</label>
+                        {{ form.description }}
+                    </div>
+                    <div class="form-group">
+                        <label for="{{ form.tags.id_for_label }}">Tags</label>
+                        <div class="tag-container">
+                            <span class="tag">UI Design</span>
+                            <span class="tag">Mobile App</span>
+                            <span class="tag">Minimalist</span>
+                            {{ form.tags }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <label for="{{ form.visibility.id_for_label }}">Visibility</label>
+                            {{ form.visibility }}
+                        </div>
+                        <div class="form-group">
+                            <label for="{{ form.id_license}}">License</label>
+                            {{ form.license }}
+                        </div>
+                        <div class="form-group checkbox-inline">
+        <div class="custom-checkbox">
+            {{ form.downloadable }}
+            <label for="{{ form.downloadable.id_for_label }}">Enable downloads</label>
+        </div>
+    </div>
+                    </div>
+                </div>
+
+                <hr>
+
+                <!-- Buttons -->
+                <div class="button-row">
+                    <button type="submit" name="draft" class="btn-draft">Save as Draft</button>
+                    <button type="button" id="cancel-btn" class="btn-cancel">Cancel</button>
+                    <button type="submit" name="publish" class="btn-publish">Publish Project</button>
+                </div>
+            </form>
+        </div>
+        {% endif %}
+
+        {% if not published_project and not edit_mode %}
+        <!-- Recent Uploads Section -->
+        <div class="recent-section">
+            <h3 class="recent-title">Recent Uploads</h3>
+            <div class="recent-uploads">
+                {% for project in recent_projects %}
+                <div class="recent-card">
+                    {% if project.images %}
+                    <img src="{{ project.images.url }}" class="recent-img">
+                    {% else %}
+                    <img src="{% static 'images/no-image.jpg' %}" class="recent-img">
+                    {% endif %}
+                    <h4>{{ project.project_title }}</h4>
+                    <p class="upload-time">{{ project.created_at|timesince }} ago</p>
+                    <div class="project-action" style="display: flex; justify-content: space-between;">
+                        <span
+                            class="status-badge {% if project.status == 'Published' %}published{% else %}draft{% endif %}">
+                            {{ project.status }}
+                        </span>
+                        <!-- <form method="post" action="{% url 'like_project' project.id %}">
+                        {% csrf_token %}
+                        <button type="button" id="like-btn" data-project="{{ project.id }}">👍 Like</button>
+                    </form> -->
+
+
+
+                        <div class="actions">
+                            <button class="icon-btn view-btn" style="border: none; background: none;"
+                                onclick="window.location.href='{% url 'project_view' project.id %}'">
+                                <img src="{% static 'images/view.PNG' %}" alt="View" />
+                            </button>
+                            <button class="icon-btn delete-btn" style="border: none; background: none;"
+                                onclick="confirmDelete({{ project.id }})">
+                                <img src="{% static 'images/delete.PNG' %}" alt="Delete" />
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+//     document.addEventListener("DOMContentLoaded", function () {
+//     const uploadArea = document.getElementById('upload-area');
+//     const fileInput = document.getElementById('file-input');
+
+//     // Only attach if elements exist
+//     if (uploadArea && fileInput) {
+//         uploadArea.addEventListener('click', function () {
+//             fileInput.click();
+//         });
+//     } else {
+//         console.log("Upload area or file input not found.");
+//     }
+// });
+
+document.getElementById('upload-area').addEventListener('click', function() {
+    document.getElementById('file-input').click();
+});
+
+document.getElementById('file-input').addEventListener('change', function() {
+    let fileList = this.files;
+    let nameList = '';
+    for (let i = 0; i < fileList.length; i++) {
+        nameList += `<p class="file-name">${fileList[i].name}</p>`;
+    }
+
+    // Check if a filename container exists, else create it
+    let existingList = document.getElementById('file-name-list');
+    if (!existingList) {
+        existingList = document.createElement('div');
+        existingList.id = 'file-name-list';
+        existingList.style.marginTop = '10px';
+        existingList.style.fontSize = '14px';
+        existingList.style.color = '#333';
+        document.getElementById('upload-area').appendChild(existingList);
+    }
+
+    existingList.innerHTML = nameList;
+});
+    function confirmDelete(projectId) {
+        if (confirm("Do you really want to delete this project?")) {
+            window.location.href = `/projects/${projectId}/delete/`;
+        }
+    }
+
+    // Cancel button clears the form
+    document.getElementById("cancel-btn")?.addEventListener("click", function () {
+        document.getElementById("projectForm").reset();
+    });
+    // document.getElementById('like-btn').addEventListener('click', function (e) {
+    //     e.preventDefault();  // <--- Prevents page navigation
+
+    //     const projectId = this.dataset.project;
+    //     fetch(`/projects/${projectId}/like/`, {
+    //         method: 'POST',
+    //         headers: {
+    //             'X-CSRFToken': '{{ csrf_token }}',
+    //             'Content-Type': 'application/json',
+    //         },
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             alert(data.message);  // Show popup only
+    //             location.reload();     // Refresh page after popup
+
+    //         })
+    //         .catch(() => alert("Something went wrong!"));
+    // });
+
+</script>
+{% endblock %}
