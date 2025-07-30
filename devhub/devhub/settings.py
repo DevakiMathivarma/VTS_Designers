@@ -145,3 +145,11 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'mathivarmaganesan@gmail.com'  # Your email
 EMAIL_HOST_PASSWORD = 'ryibqgbqlktwiwhf'
 DEFAULT_FROM_EMAIL = 'devakimathivarma@gmail.com'
+import os
+
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  # For collected static files
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),  # Your app static folder
+]
+
