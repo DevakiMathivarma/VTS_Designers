@@ -8,7 +8,7 @@
 
 <div class="hire-container">
     <h2>Hire {{ target_user.username }}</h2>
-    <form method="post">
+    <form method="post" id="hire-form">
         {% csrf_token %}
         <input type="hidden" name="user_id" value="{{ target_user.id }}">
         <div class="form-group">
@@ -25,29 +25,58 @@
         </div>
         <div class="form-group">
             <label>Project Description</label>
-            <textarea name="project_description" placeholder="Describe your project" rows="4"></textarea>
+            <textarea name="project_description" placeholder="Describe your project"  class="custom-textarea"rows="4"></textarea>
         </div>
         <div class="form-group">
             <label>Personal Note</label>
-            <textarea name="personal_note" placeholder="Add a personal note" rows="3"></textarea>
+            <textarea name="personal_note" placeholder="Add a personal note" class="custom-textarea"  rows="3"></textarea>
         </div>
         <div class="form-group">
             <label>I’m Hiring For</label>
-<div class="radio-group">
-    <label class="radio-option">
-        <input type="radio" name="hiring_for" value="Freelancing" checked>
-        <span>Freelancing</span>
-    </label>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="hiring_for" value="Freelancing" checked>
+                    <span>Freelancing</span>
+                </label>
 
-    <label class="radio-option">
-        <input type="radio" name="hiring_for" value="Company">
-        <span>Company</span>
-    </label>
-</div>
-
-
+                <label class="radio-option">
+                    <input type="radio" name="hiring_for" value="Company">
+                    <span>Company</span>
+                </label>
+            </div>
         </div>
         <button type="submit" class="btn-submit">Send Request</button>
     </form>
 </div>
+
+<script>
+    document.getElementById('hire-form').addEventListener('submit', function (e) {
+        let reason = document.querySelector('input[name="reason_for_hire"]');
+        let category = document.querySelector('input[name="category"]');
+        let budget = document.querySelector('input[name="budget"]');
+
+        // Text fields: Only letters & spaces
+        let textRegex = /^[A-Za-z\s]+$/;
+        if (!textRegex.test(reason.value.trim())) {
+            alert('Reason for hire should contain only letters and spaces.');
+            e.preventDefault();
+            return;
+        }
+        if (!textRegex.test(category.value.trim())) {
+            alert('Category should contain only letters and spaces.');
+            e.preventDefault();
+            return;
+        }
+
+        // Budget: Only positive numbers
+        if (budget.value.trim() === '' || isNaN(budget.value) || Number(budget.value) <= 0) {
+            alert('Please enter a valid budget (numbers only).');
+            e.preventDefault();
+            return;
+        }
+
+        // If everything is valid
+        alert('Hire request sent');
+    });
+</script>
 {% endblock %}

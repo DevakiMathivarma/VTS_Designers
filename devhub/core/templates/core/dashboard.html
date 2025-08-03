@@ -83,23 +83,24 @@
                 <p>Drop your files here or click to browse</p>
                 <button type="button" id="choose-files">Choose Files</button>
                 <input type="file" id="file-input" name="images" style="display: none;" multiple>
+                <div id="file-list" style="margin-top:10px; font-family:Arial, sans-serif; color:#333;"></div>
             </div>
 
             <div class="row" style="display: flex; gap: 30px; margin-top: 20px;">
-                <!-- Hardcoded Project Title -->
+               
                 <div class="form-group" style="flex: 1;">
                     <label for="project_title"
-                        style="display: block; font-weight: normal; font-size: 13px; color: #333; margin-bottom: 5px;">
+                        style="display: block; font-weight: bold; font-size: 13px; color: #333; margin-bottom: 5px;">
                         Project Title
                     </label>
                     <input type="text" id="project_title" placeholder="Enter project title" class="form-control"
                         style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px;">
                 </div>
 
-                <!-- Hardcoded Category Dropdown -->
+               
                 <div class="form-group" style="flex: 1;">
                     <label for="category"
-                        style="display: block; font-weight: normal; font-size: 13px; color: #333; margin-bottom: 5px;">
+                        style="display: block; font-weight: bold; font-size: 13px; color: #333; margin-bottom: 5px;">
                         Category
                     </label>
                     <select id="category" class="form-control"

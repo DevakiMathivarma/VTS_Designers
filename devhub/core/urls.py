@@ -15,5 +15,7 @@ path('projects/<int:project_id>/like/', views.like_project, name='like_project')
     path('projects/<int:project_id>/delete/', views.delete_project, name='delete_project'),
 
     path('profile/', views.user_profile, name='user_profile'),
+    path('messages/send/', views.compose_message, name='compose_message'),
+
 
 ]

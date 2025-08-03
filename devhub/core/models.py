@@ -22,6 +22,7 @@ class Project(models.Model):
         ('Published', 'Published')
     ]
     CATEGORY_CHOICES = [
+         ('', 'Select category'),
         ('UI', 'UI Design'),
         ('WEB', 'Web Design'),
         ('APP', 'App Design'),
@@ -36,7 +37,8 @@ class Project(models.Model):
     owner = models.ForeignKey(PythonUser, on_delete=models.CASCADE, related_name='projects')
     images = models.ImageField(upload_to='projects/', blank=True, null=True)
     project_title = models.CharField(max_length=200)
-    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, default='UI')
+    category = models.CharField(max_length=50, choices=CATEGORY_CHOICES, blank=True,  
+    null=True)
     license = models.CharField(max_length=50, choices=LICENSE_CHOICES, default='ALL_RIGHTS')
     description = models.TextField(max_length=100)
     tags = models.CharField(max_length=200, blank=True)

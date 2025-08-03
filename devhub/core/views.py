@@ -403,3 +403,24 @@ def user_profile(request):
         user.save()
     return render(request, "core/profile.html", {"user": request.user})
 
+from django.contrib.auth import get_user_model
+from django.shortcuts import redirect
+from .models import Message
+
+User = get_user_model()
+
+def compose_message(request):
+    if request.method == "POST":
+        recipient_username = request.POST.get('recipient')
+        message_text = request.POST.get('message')
+        try:
+            recipient = User.objects.get(username=recipient_username)
+            Message.objects.create(
+                sender=request.user,
+                receiver=recipient,
+                content=message_text
+            )
+        except User.DoesNotExist:
+            # Handle invalid recipient (optional)
+            pass
+    return redirect('messages_view')  # Replace with your messages page name

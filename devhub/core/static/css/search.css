@@ -14,9 +14,11 @@ body, html {
 /* --- Override only for Search Page --- */
 .right-column .topbar {
     /* margin: 0; */
-    width: calc(100% - 240px);  /* account for sidebar */
+    width: calc(100% - 210px);  /* account for sidebar */
     /* margin-left: 240px;         push right after sidebar */
     box-sizing: border-box;
+   transform: translateX(-30px);
+
 }
 
 .right-column .main-content {
@@ -428,6 +430,14 @@ body, html {
     .projects-scroll .project-card{
             flex: 0 0 100%;   
     }
+    .right-column .topbar {
+    /* margin: 0; */
+    width: calc(100% - 210px);  /* account for sidebar */
+    /* margin-left: 240px;         push right after sidebar */
+    box-sizing: border-box;
+   transform: translateX(20px);
+
+}
 }
 @media (min-width: 767px) and (max-width: 899px) {
     .right-column .topbar {
@@ -466,6 +476,14 @@ body, html {
     .projects-scroll .project-card{
             flex: 0 0 100%;   
     }
+      .right-column .topbar {
+    /* margin: 0; */
+    width: calc(100% - 210px);  /* account for sidebar */
+    /* margin-left: 240px;         push right after sidebar */
+    box-sizing: border-box;
+   transform: translateX(20px);
+
+}
 }
 @media (min-width: 899px) and (max-width: 1023px) {
 .right-column .topbar {
@@ -503,7 +521,15 @@ body, html {
     }
     .projects-scroll .project-card{
             flex: 0 0 50%;   
-    }
+    }          .right-column .topbar {
+    /* margin: 0; */
+    width: calc(100% - 210px);  /* account for sidebar */
+    /* margin-left: 240px;         push right after sidebar */
+    box-sizing: border-box;
+   transform: translateX(7px);
+
+}
+
 }
 @media (min-width: 1023px) and (max-width: 1199px) {
 .right-column .topbar {
@@ -542,6 +568,14 @@ body, html {
     .projects-scroll .project-card{
             flex: 0 0 50%;   
     }
+              .right-column .topbar {
+    /* margin: 0; */
+    width: calc(100% - 210px);  /* account for sidebar */
+    /* margin-left: 240px;         push right after sidebar */
+    box-sizing: border-box;
+   transform: translateX(0px);
+
+}
 }
 @media (min-width: 1199px) and (max-width: 1439px) {
 .right-column .topbar {

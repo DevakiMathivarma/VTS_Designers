@@ -167,3 +167,7 @@ body{
     position: relative;
     top: 0.5px;   /* adjust slightly to perfectly center */
 }
+.custom-textarea {
+    font-family: 'Outfit', sans-serif;}
+.custom-textarea::placeholder {
+    font-family: 'Outfit', sans-serif;}

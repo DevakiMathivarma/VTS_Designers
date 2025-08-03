@@ -22,7 +22,11 @@ body{
     justify-content: space-between;
     align-items: center;
 }
-
+.custom-textarea::placeholder {
+    font-family: 'Outfit', sans-serif;
+    
+   
+}
 .preview-info h2 {
     font-size: 22px;
     font-weight: 700;
@@ -47,12 +51,13 @@ body{
 } */
 
 .upload-icon {
-    width: 40px;
-    height: 40px;
+    width: 90px;
+    height: 70px;
     margin-bottom: 10px;
 }
 
 .upload-title {
+    margin-top: -5px;
     font-size: 16px;
     font-weight: bold;
     color: #333;
@@ -68,18 +73,19 @@ body{
     color: #999;
 }
 
-.custom-checkbox {
+/* .custom-checkbox {
     display: flex;
+
     align-items: center;
     gap: 6px;
-    font-size: 13px; /* smaller text */
+    font-size: 13px;
     color: #555;
 }
 
 .custom-checkbox input[type="checkbox"] {
     width: 16px;
     height: 16px;
-    accent-color: #f28c28; /* orange checkbox (optional) */
+    accent-color: #f28c28;
     cursor: pointer;
 }
 
@@ -87,7 +93,37 @@ body{
     margin: 0;
     cursor: pointer;
     font-weight: normal;
+} */
+
+.checkbox-inline {
+    display: flex;
+    flex-direction: column;  /* Stack title on top */
+    align-items: flex-start;
+    margin-top: 20px;
 }
+
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: #222;
+    margin-top: 5px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: #f28c28; /* Orange checkbox */
+    cursor: pointer;
+}
+
+.custom-checkbox label {
+    margin: 0;
+    cursor: pointer;
+   color:rgb(64, 64, 64);
+}
+
 
 .preview-info p {
     margin: 5px 0;
@@ -199,8 +235,11 @@ body{
     border: 1px solid #f9b87e;
     border-radius: 8px;
     font-size: 14px;
+    margin-top: 8px;
 }
-
+.form-group label{
+    margin-bottom: 10px;
+}
 .button-row {
     display: flex;
     justify-content: space-between;
@@ -268,7 +307,7 @@ body{
 .status-badge.published {
     background: #e6f7ec;
     color: #2e7d32;
-    pa
+    
 }
 
 .status-badge.draft {
@@ -306,17 +345,17 @@ body{
     align-items: center;
 }
 .tag {
-    background: #ffe5ef;
-    color: #ff5e8e;
+     background-color: #fff9cc; /* Soft yellow */
+    color: #f5a623; 
     padding: 5px 10px;
     border-radius: 20px;
     font-size: 12px;
 }
-.checkbox-inline {
+/* .checkbox-inline {
     display: flex;
     align-items: center;
     margin-top: 28px;
-}
+} */
 .btn-cancel {
     background: transparent;
     border: none;
@@ -327,11 +366,16 @@ body{
 .form-group select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ddd;
+   border: 1px solid #f9b87e;
     border-radius: 8px;
     font-size: 14px;
     background: #fff;
 }
+
+
+/* ================== RESPONSIVE ================== */
+
+
 @media (min-width: 320px) and (max-width: 374px) {
             .right-column .topbar{
        

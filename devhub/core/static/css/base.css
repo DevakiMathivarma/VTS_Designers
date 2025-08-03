@@ -201,7 +201,8 @@ body{
     text-decoration: none;   /* Remove underline */
     border: none;            /* Remove any borders */
     display: inline-block;
-    line-height: 1;          /* Prevent extra space below */
+    line-height: 1;  
+    color:black;        /* Prevent extra space below */
 }
 
 .icon-link.notif {
@@ -371,6 +372,7 @@ body{
     }
 .logo-text{
     position:relative;
+    margin-top: -10px;
 }
 
     .menu-btn {
@@ -459,6 +461,7 @@ body{
 
 .logo-text{
     position:relative;
+    margin-top: -10px;
 }
 
     .menu-btn {

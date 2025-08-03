@@ -5,67 +5,132 @@
 <link rel="stylesheet" href="{% static 'css/profile.css' %}">
 {% endblock %}
 {% block content %}
-<div class="profile-container">
-    <h2 class="profile-title">My Profile</h2>
-    <form method="post" enctype="multipart/form-data" class="profile-form">
-        {% csrf_token %}
-
-        <!-- Profile Picture -->
-        <div class="profile-pic-section">
-            <img src="{% if user.profile_pic %}{{ user.profile_pic.url }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" 
-                 alt="Profile Picture" class="profile-pic-preview">
+<div class="profile-wrapper">
+    <!-- Filter Section -->
+    <div class="filter-section">
+        <h3>Filter</h3>
+        <div class="filter-box">
+            <div class="custom-checkbox">
+                <input type="checkbox" id="filter-projects" checked>
+                <label for="filter-projects">Projects</label>
+            </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" id="filter-people" checked>
+                <label for="filter-people">People</label>
+            </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" id="filter-assets" checked>
+                <label for="filter-assets">Assets</label>
+            </div>
+            <div class="custom-checkbox">
+                <input type="checkbox" id="filter-images" checked>
+                <label for="filter-images">Images</label>
+            </div>
         </div>
-<div class="form-group">
-    <label for="profile_pic" class="file-label">Upload Profile Picture</label>
-    <input type="file" id="profile_pic" name="profile_pic" class="file-input">
-</div>
-
-        <!-- Fields -->
-        <div class="form-group">
-            <label>Name</label>
-            <input type="text" name="username" value="{{ user.username }}" readonly>
-        </div>
-
-        <div class="form-group">
-            <label>Occupation</label>
-            <input type="text" name="occupation" value="{{ user.occupation }}">
-        </div>
-
-        <div class="form-group">
-            <label>Company Name</label>
-            <input type="text" name="company_name" value="{{ user.company_name }}">
-        </div>
-
-        <div class="form-group">
-            <label>Location</label>
-            <input type="text" name="location" value="{{ user.location }}">
-        </div>
-
-        <div class="form-group">
-            <label>About Me</label>
-            <textarea name="about_me" rows="4">{{ user.about_me }}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label>Project Descriptions</label>
-            <textarea name="projects_descriptions" rows="4">{{ user.projects_descriptions }}</textarea>
-        </div>
-
-        <div class="form-group custom-section-container">
-    <div id="custom-sections">
-        <!-- Dynamic fields will be added here -->   
-
     </div>
-    <button type="button" id="add-custom-section" class="add-btn">+ Add Custom Section</button>
+
+    <!-- Profile Form -->
+    <div class="profile-container">
+        <h2 class="profile-title">My Profile</h2>
+        <form method="post" enctype="multipart/form-data" class="profile-form">
+            {% csrf_token %}
+            
+            <!-- Profile Picture -->
+            <div id="images-section">
+                <div class="profile-pic-section">
+                    <img src="{% if user.profile_pic %}{{ user.profile_pic.url }}{% else %}{% static 'images/default-avatar.png' %}{% endif %}" 
+                         alt="Profile Picture" class="profile-pic-preview">
+                </div>
+                <div class="form-group">
+                    <label for="profile_pic" class="file-label">Upload Profile Picture</label>
+                    <input type="file" id="profile_pic" name="profile_pic" class="file-input">
+                </div>
+            </div>
+
+            <!-- Personal Info -->
+            <div id="people-section">
+                <div class="form-group">
+                    <label>Name</label>
+                    <input type="text" name="username" value="{{ user.username }}" readonly>
+                </div>
+
+                <div class="form-group">
+                    <label>Occupation</label>
+                    <input type="text" name="occupation" value="{{ user.occupation }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Company Name</label>
+                    <input type="text" name="company_name" value="{{ user.company_name }}">
+                </div>
+
+                <div class="form-group">
+                    <label>Location</label>
+                    <input type="text" name="location" value="{{ user.location }}">
+                </div>
+            </div>
+
+            <!-- About & Projects -->
+            <div id="projects-section">
+                <div class="form-group">
+                    <label>About Me</label>
+                    <textarea class="about-me-textarea" name="about_me" rows="4">{{ user.about_me }}</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Project Descriptions</label>
+                    <textarea class="about-me-textarea" name="projects_descriptions" rows="4">{{ user.projects_descriptions }}</textarea>
+                </div>
+            </div>
+
+            <!-- Assets Section -->
+            <div id="assets-section">
+                <div class="form-group custom-section-container">
+                    <div id="custom-sections"></div>
+                    <button type="button" id="add-custom-section" class="add-btn">+ Add Custom Section</button>
+                </div>
+            </div>
+
+            <!-- Save Button -->
+            <button type="submit" class="save-btn">Submit</button>
+        </form>
+    </div>
 </div>
 
-        <!-- Save Button -->
-        <button type="submit" class="save-btn">Submit</button>
-    </form>
-</div>
 {% endblock %}
 {% block extra_js %}
 <script>
+ const allowedImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/webp'];
+
+    const profilePic = document.getElementById('profile_pic');
+    const textFields = document.querySelectorAll('input[name="occupation"], input[name="company_name"], input[name="location"]');
+    const textAreas = document.querySelectorAll('textarea[name="about_me"], textarea[name="projects_descriptions"]');
+    const customSections = document.getElementById('custom-sections');
+    const form = document.querySelector('.profile-form');
+
+    // Profile picture validation
+    profilePic.addEventListener('change', function () {
+        const file = this.files[0];
+        if (file && !allowedImageTypes.includes(file.type)) {
+            alert('Only image files (.jpg, .jpeg, .png, .webp) are allowed.');
+            this.value = ''; // Reset file input
+        }
+    });
+
+    // Text fields validation (Only letters & spaces)
+    textFields.forEach(field => {
+        field.addEventListener('input', function () {
+            this.value = this.value.replace(/[^A-Za-z\s]/g, ''); // Remove numbers & special characters
+        });
+    });
+
+    // About Me & Project Description (Allow letters, numbers & basic punctuation)
+    textAreas.forEach(area => {
+        area.addEventListener('input', function () {
+            this.value = this.value.replace(/[^A-Za-z0-9.,!?\s]/g, ''); 
+        });
+    });
+
     document.getElementById('add-custom-section').addEventListener('click', function () {
         let container = document.getElementById('custom-sections');
 
@@ -85,6 +150,32 @@
         input.placeholder = 'Enter custom message';
         container.appendChild(input);
     });
+        form.addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent immediate page reload for demo
+        alert('Profile updated successfully');
+        this.submit(); // Now actually submit the form
+    });
+    document.addEventListener("DOMContentLoaded", function () {
+    const filters = [
+        { checkbox: "filter-projects", section: "projects-section" },
+        { checkbox: "filter-people", section: "people-section" },
+        { checkbox: "filter-assets", section: "assets-section" },
+        { checkbox: "filter-images", section: "images-section" }
+    ];
+
+    filters.forEach(f => {
+        const checkbox = document.getElementById(f.checkbox);
+        const section = document.getElementById(f.section);
+
+        // Initial visibility
+        section.style.display = checkbox.checked ? "block" : "none";
+
+        // Toggle on change
+        checkbox.addEventListener("change", function () {
+            section.style.display = this.checked ? "block" : "none";
+        });
+    });
+});
 </script>
 
 {% endblock %}

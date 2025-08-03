@@ -6,6 +6,8 @@
 
 <div class="messages-wrapper">
     <!-- Sidebar -->
+
+
     <div class="message-sidebar">
         <div class="sidebar-header">
             <h2><i class="bx bx-envelope"></i> Messages</h2>
@@ -32,7 +34,16 @@
             <p class="empty-msg">No messages yet.</p>
             {% endfor %}
         </div>
+        <!-- <button id="compose-btn" class="compose-btn">+ Compose</button> -->
+
+        <a id="compose-btn" class="compose-btn" 
+   href="mailto:{% if selected_user %}{{ selected_user.email }}{% endif %}?subject=Hello&body=Hi {{ selected_user.username }},">
+   + Compose
+</a>
+
     </div>
+
+    
 
     <!-- Chat Content -->
     <div class="message-content">
@@ -81,5 +92,49 @@
         window.scrollTo(0, document.body.scrollHeight);
 
     });
+
+    // document.addEventListener("DOMContentLoaded", function () {
+    //     const chatBody = document.querySelector(".chat-body");
+    //     if (chatBody) {
+    //         chatBody.scrollTop = chatBody.scrollHeight; // Scroll to bottom
+    //     }
+
+    //     // Compose modal logic
+    //     const composeBtn = document.getElementById('compose-btn');
+    //     const composeModal = document.getElementById('compose-modal');
+    //     const closeModal = document.getElementById('close-modal');
+
+    //     if (composeBtn) {
+    //         composeBtn.addEventListener('click', () => {
+    //             composeModal.style.display = 'flex';
+    //         });
+    //     }
+    //     if (closeModal) {
+    //         closeModal.addEventListener('click', () => {
+    //             composeModal.style.display = 'none';
+    //         });
+    //     }
+    //     window.addEventListener('click', function (e) {
+    //         if (e.target === composeModal) {
+    //             composeModal.style.display = 'none';
+    //         }
+    //     });
+    // });
+
+    document.addEventListener("DOMContentLoaded", function () {
+    const composeBtn = document.getElementById('compose-btn');
+    const selectedEmail = "{{ selected_user.email|default:'' }}";
+    const selectedUsername = "{{ selected_user.username|default:'' }}";
+
+    composeBtn.addEventListener('click', function (e) {
+        if (!selectedEmail) {
+            alert("Please select a user first to compose an email.");
+            e.preventDefault();
+        } else {
+            this.href = `mailto:${selectedEmail}?subject=Hello ${selectedUsername}&body=Hi ${selectedUsername},`;
+        }
+    });
+});
+
 </script>
 {% endblock %}
