@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-lijgnu$ybc)a7c%bqw=_4)imzl4_&pec&yv@ldjeo60c#kknd*
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['core.onrender.com','127.0.0.1']
+ALLOWED_HOSTS = ['*']
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
@@ -50,6 +50,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
+
 ]
 
 ROOT_URLCONF = 'devhub.urls'

@@ -47,6 +47,7 @@ body{
     font-size: 16px;
     margin: 0;
     font-weight: bold;
+    
     white-space: nowrap; /* prevent breaking */
 }
 
@@ -152,7 +153,7 @@ body{
 
 /* Share Button */
 .share-btn {
-    background: #ff5b77;
+    background: #f95757;
     border: none;
     padding: 10px 15px;
     color: #fff;
@@ -223,7 +224,7 @@ body{
     box-shadow: 0px 4px 15px rgba(0,0,0,0.15);
     border-radius: 15px;
     padding: 20px;
-    z-index: 1000;
+    z-index: 2000;
     font-family: 'Inter', sans-serif;
 }
 .notif-popup.active { display: block; }
@@ -345,14 +346,15 @@ body{
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 40px;
+        top: 50px;
         left: 0;
-        width: 100%;
+        width: 87%;
         height:200px;
         background: #FAA856;
         padding: 20px;
         box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         z-index: 1000;
+        margin: auto;
     }
 
    
@@ -426,6 +428,12 @@ body{
         flex-direction: column;
         align-items: center; 
     }
+    .notif-popup {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 190px;  /* <-- Increase this (was 60px) */
+    width: 240px;}
 
 }
 @media (min-width: 374px) and (max-width: 424px) {
@@ -433,9 +441,9 @@ body{
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 40px;
+        top: 50px;
         left: 0;
-        width: 100%;
+        width: 87%;
         height:200px;
         background: #FAA856;
         padding: 20px;
@@ -499,6 +507,13 @@ body{
         align-items: center;
     }
 
+   .notif-popup {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 190px;  /* <-- Increase this (was 60px) */
+    width: 290px;}
+
 
   
     .icons{
@@ -519,9 +534,9 @@ body{
         display: none;
         flex-direction: column;
         position: absolute;
-        top: 40px;
+        top: 50px;
         left: 0;
-        width: 100%;
+        width: 87%;
         height:200px;
         background: #FAA856;
         padding: 20px;
@@ -548,7 +563,12 @@ body{
 .logo-text{
     position:relative;
       margin-top: -10px;
-}
+}  .notif-popup {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 190px;  /* <-- Increase this (was 60px) */
+    width: 340px;}
 
     .menu-btn {
        
@@ -618,6 +638,12 @@ body{
  .topbar{
     flex-wrap: wrap;
  }
+   .notif-popup {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 190px;  /* <-- Increase this (was 60px) */
+    width: 340px;}
 }
 @media (min-width: 767px) and (max-width: 899px) {
    .left-column{
@@ -634,6 +660,12 @@ body{
     flex-wrap: wrap;
     margin-left: 10%;
  }
+    .notif-popup {
+    display: none;
+    position: absolute;
+    right: 20px;
+    top: 190px;  /* <-- Increase this (was 60px) */
+    width: 340px;}
 }
 @media (min-width: 899px) and (max-width: 1023px) {
      .left-column{
@@ -650,6 +682,12 @@ body{
     flex-wrap: wrap;
     margin-left: 10%;
  }
+    .notif-popup {
+    display: none;
+    position: absolute;
+    right: 20%;
+    top: 190px;  /* <-- Increase this (was 60px) */
+    width: 340px;}
 }
 @media (min-width: 1023px) and (max-width: 1199px) {
   .left-column{
@@ -666,6 +704,12 @@ body{
     flex-wrap: wrap;
     margin-left: 4%;
  }
+ .notif-popup {
+    display: none;
+    position: absolute;
+    right: 30%;
+    top: 190px;  /* <-- Increase this (was 60px) */
+    width: 340px;}
 }
 
 @media (min-width: 1199px) and (max-width: 1439px) {

@@ -36,14 +36,14 @@
         </div>
         <!-- <button id="compose-btn" class="compose-btn">+ Compose</button> -->
 
-        <a id="compose-btn" class="compose-btn" 
-   href="mailto:{% if selected_user %}{{ selected_user.email }}{% endif %}?subject=Hello&body=Hi {{ selected_user.username }},">
-   + Compose
-</a>
+        <a id="compose-btn" class="compose-btn"
+            href="mailto:{% if selected_user %}{{ selected_user.email }}{% endif %}?subject=Hello&body=Hi {{ selected_user.username }},">
+            + Compose
+        </a>
 
     </div>
 
-    
+
 
     <!-- Chat Content -->
     <div class="message-content">
@@ -122,19 +122,19 @@
     // });
 
     document.addEventListener("DOMContentLoaded", function () {
-    const composeBtn = document.getElementById('compose-btn');
-    const selectedEmail = "{{ selected_user.email|default:'' }}";
-    const selectedUsername = "{{ selected_user.username|default:'' }}";
+        const composeBtn = document.getElementById('compose-btn');
+        const selectedEmail = "{{ selected_user.email|default:'' }}";
+        const selectedUsername = "{{ selected_user.username|default:'' }}";
 
-    composeBtn.addEventListener('click', function (e) {
-        if (!selectedEmail) {
-            alert("Please select a user first to compose an email.");
-            e.preventDefault();
-        } else {
-            this.href = `mailto:${selectedEmail}?subject=Hello ${selectedUsername}&body=Hi ${selectedUsername},`;
-        }
+        composeBtn.addEventListener('click', function (e) {
+            if (!selectedEmail) {
+                alert("Please select a user first to compose an email.");
+                e.preventDefault();
+            } else {
+                this.href = `mailto:${selectedEmail}?subject=Hello ${selectedUsername}&body=Hi ${selectedUsername},`;
+            }
+        });
     });
-});
 
 </script>
 {% endblock %}

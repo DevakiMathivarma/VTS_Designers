@@ -12,13 +12,22 @@ body, html {
     overflow-x: hidden;
 }
 /* --- Override only for Search Page --- */
+
 .right-column .topbar {
+     width: calc(100% - 15%) !important; /* Adjust topbar width */
+    margin-left: 8% !important;
     /* margin: 0; */
-    width: calc(100% - 210px);  /* account for sidebar */
+     width:70%;
+    /* width: calc(100% - 210px);   */
     /* margin-left: 240px;         push right after sidebar */
     box-sizing: border-box;
    transform: translateX(-30px);
+  
+   
 
+}
+.logo-section {
+    width: 15% !important;  /* Reduce width */
 }
 
 .right-column .main-content {
@@ -157,6 +166,11 @@ body, html {
     color: #555;
     margin-top: 8px;
 }
+.notif-popup{
+    z-index: 2000;
+
+    
+}
 .project-stats i {
     color: #333;            /* Softer black for a "cuter" look */
     font-size: 14px;        /* Smaller size */
@@ -287,6 +301,9 @@ body, html {
     flex-wrap: wrap;
     width:100%;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 .right-column .icons{
     flex-wrap: wrap;
 }
@@ -325,6 +342,9 @@ body, html {
     flex-wrap: wrap;
     width:100%;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 .right-column .icons{
     flex-wrap: wrap;
 }
@@ -362,6 +382,9 @@ body, html {
     box-sizing: border-box;
     flex-wrap: wrap;
     width:100%;
+}
+.logo-section {
+    width: 100% !important;  /* Reduce width */
 }
 .right-column .icons{
     flex-wrap: wrap;

@@ -4,7 +4,7 @@ body{
 
 
 .project-create-page {
-    max-width: 1000px;
+    max-width: 900px;
     margin: 20px auto;
     padding: 10px;
 }
@@ -51,8 +51,8 @@ body{
 } */
 
 .upload-icon {
-    width: 90px;
-    height: 70px;
+    width: 70px;
+    height: 90px;
     margin-bottom: 10px;
 }
 
@@ -112,10 +112,11 @@ body{
 }
 
 .custom-checkbox input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
+    width: 15px;
+    height: 15px;
     accent-color: #f28c28; /* Orange checkbox */
     cursor: pointer;
+    margin-top: 2px;
 }
 
 .custom-checkbox label {
@@ -256,7 +257,7 @@ body{
 }
 
 .btn-publish {
-    background: #ff5e8e;
+    background: #FF0488;
     padding: 12px 20px;
     border-radius: 8px;
     border: none;
@@ -334,10 +335,10 @@ body{
     margin-bottom: 8px;
     display: block;
 }
-.upload-icon {
+/* .upload-icon {
     width: 40px;
     margin-bottom: 10px;
-}
+} */
 .tag-container {
     display: flex;
     gap: 8px;

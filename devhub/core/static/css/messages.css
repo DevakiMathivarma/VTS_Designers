@@ -310,10 +310,30 @@ body{
         overflow-y: auto;
     }
 }@media(max-width:480px){
+    .message-sidebar{
+        overflow-x: auto;
+    }
     .message-content{
         overflow-x: auto;
     }
     .messages-wrapper{
         flex-wrap: wrap;
     }
+    .compose-btn {
+    position: absolute;
+    bottom: 20px;
+    right: 8px;
+    background: #ff007f;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: background 0.2s;
+    z-index: 1000;
+    text-decoration: none;
+}
 }
