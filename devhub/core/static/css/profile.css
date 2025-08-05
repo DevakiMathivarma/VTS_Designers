@@ -2,7 +2,9 @@ body{
     font-family: "Outfit", sans-serif;
 }
 
-
+.logo-section {
+    width: 15% !important;  /* Reduce width */
+}
 /* Container */
 .profile-container {
     background: #fff;
@@ -248,6 +250,9 @@ body{
     html{
         overflow-y: auto;
     }
+      .logo-section {
+    width: 20% !important;  /* Reduce width */
+}
 }
 @media (max-width: 900px) {
     .profile-wrapper {
@@ -257,6 +262,9 @@ body{
         width: 100%;
         margin-bottom: 20px;
     }
+      .logo-section {
+    width: 23% !important;  /* Reduce width */
+}
 }
 @media (max-width: 768px) {
     .profile-container {
@@ -270,7 +278,9 @@ body{
         width: 100%;
         margin-bottom: 20px;
     }
-  
+  .logo-section {
+    width: 23% !important;  /* Reduce width */
+}
 }
 @media (max-width: 480px) {
     .filter-section {
@@ -280,5 +290,8 @@ body{
     .profile-wrapper {
         flex-direction: column;
         gap: 20px;
+    }
+    .logo-section{
+        width:100% !important;
     }
 }

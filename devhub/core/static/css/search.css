@@ -27,7 +27,7 @@ body, html {
 
 }
 .logo-section {
-    width: 15% !important;  /* Reduce width */
+    width: 14.3% !important;  /* Reduce width */
 }
 
 .right-column .main-content {
@@ -44,8 +44,8 @@ body, html {
     text-align: center;
 }
 .search-bar input {
-    width: 50%;
-    padding: 10px;
+    width: 50% !important;
+    padding: 10px 50px;
     border: 1px solid #ddd;
     border-radius: 25px;
     font-size: 16px;
@@ -53,7 +53,7 @@ body, html {
 .search-bar button {
     background: #FF007F;
     border: none;
-    padding: 10px 20px;
+    padding: 10px 30px;
     border-radius: 25px;
     color: #fff;
     margin-left: 10px;
@@ -309,13 +309,34 @@ body, html {
 }
 .user-project-container{
     flex-direction: column;
-    width:320px;
+    width:290px;
     margin-left: -150px;
     
 }
 .search-bar input{
-    width:80%;
+    width:80% !important;
+      padding: 10px 80px;
+      margin-left: -80px;
 }
+.search-bar form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.search-bar input {
+    flex: 1;
+}
+.search-bar button {
+    flex-shrink: 0;
+}
+.search-bar button {
+  margin-left: -50px;
+    padding: 10px 05px;
+    text-align: center;
+   
+}
+
 .projects-scroll {
         display: flex;               /* Use flex for horizontal layout */
         flex-wrap: nowrap;           /* Prevent wrapping */
@@ -351,11 +372,35 @@ body, html {
 .user-project-container{
     flex-direction: column;
     width:320px;
-    margin-left: -140px;
+    margin-left: -160px !important;
     
 }
+
 .search-bar input{
     width:80%;
+}
+.search-bar input{
+    width:80% !important;
+      padding: 10px 80px;
+      margin-left: -80px;
+}
+.search-bar form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.search-bar input {
+    flex: 1;
+}
+.search-bar button {
+    flex-shrink: 0;
+}
+.search-bar button {
+  margin-left: -50px;
+    padding: 10px 05px;
+    text-align: center;
+   
 }
 .projects-scroll {
         display: flex;               /* Use flex for horizontal layout */
@@ -383,6 +428,29 @@ body, html {
     flex-wrap: wrap;
     width:100%;
 }
+.search-bar input{
+    width:80% !important;
+      padding: 10px 80px;
+      margin-left: -80px;
+}
+.search-bar form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+}
+.search-bar input {
+    flex: 1;
+}
+.search-bar button {
+    flex-shrink: 0;
+}
+.search-bar button {
+  margin-left: -50px;
+    padding: 10px 05px;
+    text-align: center;
+   
+}
 .logo-section {
     width: 100% !important;  /* Reduce width */
 }
@@ -392,12 +460,13 @@ body, html {
 .user-project-container{
     flex-direction: column;
     width:350px;
-    margin-left: -140px;
+    margin-left: -160px;
     
 }
 .search-bar input{
-    width:80%;
+    width:80% !important;
 }
+
 .projects-scroll {
         display: flex;               /* Use flex for horizontal layout */
         flex-wrap: nowrap;           /* Prevent wrapping */
@@ -425,7 +494,7 @@ body, html {
     width:100%;
 }
 .logo-section {
-    width: 100% !important;  /* Reduce width */
+    width: 23% !important;  /* Reduce width */
 }
 .right-column .icons{
     flex-wrap: wrap;
@@ -438,6 +507,10 @@ body, html {
 }
 .search-bar input{
     width:80%;
+    
+}
+.search-bar button{
+    margin-top: 10px;
 }
 .projects-scroll {
         display: flex;               /* Use flex for horizontal layout */
@@ -484,7 +557,7 @@ body, html {
 
 }
 .logo-section {
-    width: 100% !important;  /* Reduce width */
+    width: 23% !important;  /* Reduce width */
 }
 .search-bar input{
     width:80%;
@@ -544,7 +617,7 @@ body, html {
         margin-left: 5px;
     }
 .logo-section {
-    width: 100% !important;  /* Reduce width */
+    width: 19% !important;  /* Reduce width */
 }
     .projects-scroll > * {
         flex: 0 0 auto;              /* Prevent shrinking */
@@ -572,7 +645,7 @@ body, html {
     width:100%;
 }
 .logo-section {
-    width: 100% !important;  /* Reduce width */
+    width: 17% !important;  /* Reduce width */
 }
 .right-column .icons{
     flex-wrap: wrap;
@@ -620,9 +693,7 @@ body, html {
     flex-wrap: wrap;
     width:100%;
 }
-.logo-section {
-    width: 100% !important;  /* Reduce width */
-}
+
 .right-column .icons{
     flex-wrap: wrap;
 }
@@ -661,9 +732,7 @@ body, html {
     flex-wrap: wrap;
     width:100%;
 }
-.logo-section {
-    width: 100% !important;  /* Reduce width */
-}
+
 .right-column .icons{
     flex-wrap: wrap;
 }

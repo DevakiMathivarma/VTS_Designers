@@ -247,7 +247,7 @@ body{
     margin-top: 20px;
 }
 .logo-section {
-    width: 15% !important;  /* Reduce width */
+    width: 15% !important;  
 }
 .btn-draft {
     background: #ffb74d;
@@ -494,7 +494,7 @@ body{
     gap:30px;
 }
 .logo-section {
-    width: 100% !important;  /* Reduce width */
+    width: 24% !important;  /* Reduce width */
 }
 }
 @media (min-width: 767px) and (max-width: 899px) {
@@ -511,7 +511,7 @@ body{
     gap:30px;
 }
 .logo-section {
-    width: 100% !important;  /* Reduce width */
+    width: 23% !important;  /* Reduce width */
 }
 }
 @media (min-width: 899px) and (max-width: 1023px) {
@@ -527,7 +527,7 @@ body{
     gap:30px;
 }
 .logo-section {
-    width: 100% !important;  /* Reduce width */
+    width: 20% !important;  /* Reduce width */
 }
 }
 @media (min-width: 1023px) and (max-width: 1199px) {
@@ -543,7 +543,7 @@ body{
     gap:30px;
 }
 .logo-section {
-    width: 100% !important;  /* Reduce width */
+    width: 20% !important;  /* Reduce width */
 }
 }
 @media (min-width: 1199px) and (max-width: 1439px) {
@@ -558,9 +558,7 @@ body{
     flex-wrap: wrap;
     gap:30px;
 }
-.logo-section {
-    width: 100% !important;  /* Reduce width */
-}
+
 }
 @media (min-width: 1439px) and (max-width: 1599px) {
                 .project-form-container{
@@ -574,9 +572,9 @@ body{
     flex-wrap: wrap;
     gap:30px;
 }
-.logo-section {
-    width: 100% !important;  /* Reduce width */
-}
+/* .logo-section {
+    width: 100% !important; 
+} */
 }
 @media (max-width:1024px){
      body{
