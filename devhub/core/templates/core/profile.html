@@ -150,11 +150,53 @@
         input.placeholder = 'Enter custom message';
         container.appendChild(input);
     });
-        form.addEventListener('submit', function (e) {
-        e.preventDefault(); // Prevent immediate page reload for demo
-        alert('Profile updated successfully');
-        this.submit(); // Now actually submit the form
+    //     form.addEventListener('submit', function (e) {
+    //     e.preventDefault(); // Prevent immediate page reload for demo
+    //     alert('Profile updated successfully');
+    //     this.submit(); // Now actually submit the form
+    // });
+
+    form.addEventListener('submit', function (e) {
+    e.preventDefault(); // Stop default submit for validation
+
+    let updated = false;
+
+    // Check if a new profile picture is selected
+    if (profilePic.files.length > 0) {
+        updated = true;
+    }
+
+    // Check if any text field is changed
+    textFields.forEach(field => {
+        if (field.value.trim() !== field.defaultValue.trim()) {
+            updated = true;
+        }
     });
+
+    // Check if any textarea is changed
+    textAreas.forEach(area => {
+        if (area.value.trim() !== area.defaultValue.trim()) {
+            updated = true;
+        }
+    });
+
+    // Check if custom sections have any input
+    const customInputs = document.querySelectorAll('input[name="custom_message[]"]');
+    customInputs.forEach(input => {
+        if (input.value.trim() !== "") {
+            updated = true;
+        }
+    });
+
+    // Show alert only if something is updated
+    if (updated) {
+        alert('Profile updated successfully');
+        this.submit(); // Actually submit the form
+    } else {
+        alert('No changes detected.');
+    }
+});
+
     document.addEventListener("DOMContentLoaded", function () {
     const filters = [
         { checkbox: "filter-projects", section: "projects-section" },

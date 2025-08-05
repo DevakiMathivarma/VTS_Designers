@@ -3,7 +3,9 @@ body{
 }
 
 
-
+    .logo-section {
+    width: 15% !important;  /* Reduce width */
+}
 
 /* Stats Cards Container */
 
@@ -234,12 +236,25 @@ body{
 .recent-msg{
     display:flex;
     flex-direction: column;
-   
+    width: 100%;
     margin-top: 10px;
+}
+.recent-messages{
+    display:flex;
+    justify-content:space-between;
+      align-items: center;  /* Vertically center text */
+    width: 100% !important;
+    
+}
+
+.recent-messages b {
+
+    display: inline;
 }
 /* Recent Messages */
 .message-item {
     display: flex;
+    
     align-items: center;
     gap: 10px;
     margin-bottom: 12px;
@@ -261,6 +276,12 @@ body{
 }
 .message-item:last-child {
     margin-bottom: 0;
+}.recent-messages .time {
+    font-size: 12px;
+    color: #999;
+    margin-left: 10px;
+    white-space: nowrap; /* Prevent wrapping */
+    display:inline-block ;
 }
 
 /* Notifications */
@@ -367,8 +388,12 @@ body{
         display:block;
     }
     .new-project-btn{
+      
         margin-top: -90px;
     }
+        .logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 
 
@@ -388,6 +413,9 @@ body{
     .new-project-btn{
         margin-top: -90px;
     }
+        .logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 425px) and (max-width: 599px){
     .stats-cards{
@@ -396,6 +424,9 @@ body{
     .content-section{
          grid-template-columns: 1fr;
     }
+        .logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 
 @media (min-width: 600px) and (max-width: 767px) {
@@ -407,6 +438,9 @@ body{
      .content-section{
          grid-template-columns: 1fr;
     }
+    .logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 768px) and (max-width: 899px) {
      .stats-cards{
@@ -417,6 +451,9 @@ body{
      .content-section{
          grid-template-columns: 1fr;
     }
+    .logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 899px) and (max-width: 1023px) {
      .stats-cards{
@@ -427,6 +464,9 @@ body{
      .content-section{
          grid-template-columns: 1fr;
     }
+    .logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 1023px) and (max-width: 1199px) {
     .stats-cards{
@@ -437,6 +477,9 @@ body{
      .content-section{
          grid-template-columns: 1fr;
     }
+    .logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 1199px) and (max-width: 1439px) {
 

@@ -136,14 +136,14 @@ body{
 .edit-link {
     background: none;
     border: none;
-    color: #fb2464;
+    color: #FF007F;
     font-size: 14px;
     cursor: pointer;
     
 }
 
 .hire-btn {
-    background: #ff5e8e;
+    background: #FF007F;
     color: #fff;
     padding: 10px 18px;
     border-radius: 8px;
@@ -246,7 +246,9 @@ body{
     justify-content: space-between;
     margin-top: 20px;
 }
-
+.logo-section {
+    width: 15% !important;  /* Reduce width */
+}
 .btn-draft {
     background: #ffb74d;
     padding: 12px 20px;
@@ -406,6 +408,9 @@ body{
 .form-fields label{
     display: block;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 .button-row {
    
     justify-content: center;
@@ -444,6 +449,9 @@ body{
     width:70%;
     margin-left: -5%;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
  .row{
         flex-direction: column;
     }
@@ -461,6 +469,9 @@ body{
  .row{
         flex-direction: column;
     }
+    .logo-section {
+    width: 100% !important;  /* Reduce width */
+}
     .preview-header{
     flex-direction: column;
     gap:30px;
@@ -482,6 +493,9 @@ body{
     flex-direction: column;
     gap:30px;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 767px) and (max-width: 899px) {
      .project-form-container{
@@ -496,6 +510,9 @@ body{
     flex-wrap: wrap;
     gap:30px;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 899px) and (max-width: 1023px) {
     .project-form-container{
@@ -508,6 +525,9 @@ body{
     .preview-header{
     flex-wrap: wrap;
     gap:30px;
+}
+.logo-section {
+    width: 100% !important;  /* Reduce width */
 }
 }
 @media (min-width: 1023px) and (max-width: 1199px) {
@@ -522,6 +542,9 @@ body{
     flex-wrap: wrap;
     gap:30px;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 1199px) and (max-width: 1439px) {
             .project-form-container{
@@ -535,6 +558,9 @@ body{
     flex-wrap: wrap;
     gap:30px;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 }
 @media (min-width: 1439px) and (max-width: 1599px) {
                 .project-form-container{
@@ -547,6 +573,9 @@ body{
     .preview-header{
     flex-wrap: wrap;
     gap:30px;
+}
+.logo-section {
+    width: 100% !important;  /* Reduce width */
 }
 }
 @media (max-width:1024px){

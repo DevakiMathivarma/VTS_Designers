@@ -51,7 +51,7 @@ body, html {
     font-size: 16px;
 }
 .search-bar button {
-    background: #FF5E8E;
+    background: #FF007F;
     border: none;
     padding: 10px 20px;
     border-radius: 25px;
@@ -424,6 +424,9 @@ body, html {
     flex-wrap: wrap;
     width:100%;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 .right-column .icons{
     flex-wrap: wrap;
 }
@@ -478,6 +481,10 @@ body, html {
     width:450px;
     margin-left: -120px;
     
+
+}
+.logo-section {
+    width: 100% !important;  /* Reduce width */
 }
 .search-bar input{
     width:80%;
@@ -536,7 +543,9 @@ body, html {
         width: 100%;
         margin-left: 5px;
     }
-
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
     .projects-scroll > * {
         flex: 0 0 auto;              /* Prevent shrinking */
         min-width: 250px;           /* Each item width */
@@ -561,6 +570,9 @@ body, html {
     box-sizing: border-box;
     flex-wrap: wrap;
     width:100%;
+}
+.logo-section {
+    width: 100% !important;  /* Reduce width */
 }
 .right-column .icons{
     flex-wrap: wrap;
@@ -608,6 +620,9 @@ body, html {
     flex-wrap: wrap;
     width:100%;
 }
+.logo-section {
+    width: 100% !important;  /* Reduce width */
+}
 .right-column .icons{
     flex-wrap: wrap;
 }
@@ -645,6 +660,9 @@ body, html {
     box-sizing: border-box;
     flex-wrap: wrap;
     width:100%;
+}
+.logo-section {
+    width: 100% !important;  /* Reduce width */
 }
 .right-column .icons{
     flex-wrap: wrap;
